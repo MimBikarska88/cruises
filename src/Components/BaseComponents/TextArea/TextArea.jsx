@@ -1,9 +1,8 @@
 import styles from "../../CruiseForm/CruiseForm.module.css";
-const TextInput = ({
+const TextArea = ({
   label,
   disabled = false,
   className = "",
-  type = "",
   onChange,
   value,
   name,
@@ -13,15 +12,14 @@ const TextInput = ({
       <label className={`d-inline-block ${styles.label}`} htmlFor={name}>
         {label}
       </label>
-      <input
-        type={type !== "" ? type : "text"}
-        name={name}
-        value={value}
+      <textarea
+        className={`single-textarea btn-outline-dark ${styles["single-input"]}  ${className}`}
         disabled={disabled}
+        value={value}
+        name={name}
         onChange={onChange}
-        className={`single-input d-inline-block btn-outline-dark ${styles["single-input"]} ${className}`}
-      />
+      ></textarea>
     </div>
   );
 };
-export default TextInput;
+export default TextArea;
