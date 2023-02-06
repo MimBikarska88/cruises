@@ -2,11 +2,12 @@ import HorizontalTabs from "../../BaseComponents/Tabs/HorizontalTabs";
 import CollateCenter from "./CollateCenter";
 import Objectives from "./Objectives";
 import Cruise from "./Cruise";
+
 const GeneralInformation = () => {
   return (
     <>
       <HorizontalTabs
-        title={"General  Information"}
+        title="General Information"
         tabs={[
           {
             name: "Cruise",

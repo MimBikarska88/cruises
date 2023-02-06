@@ -1,37 +1,72 @@
-import styles from "../CruiseForm.module.css";
+/**
+ * External Dependencies.
+ */
+import { Controller, useFormContext } from "react-hook-form";
+
+/**
+ * Internal Dependencies.
+ */
 import TextInput from "../../BaseComponents/TextInput/TextInput";
-const Identification = ({ identification, setIdentification }) => {
-  // must use state or context in next step to keep track of the input values
-  // onChange for each input must be provided
-  // value prop for each input must be set accordingly
+
+const Identification = () => {
+  const form = useFormContext()
 
   return (
     <>
-      <TextInput
-        disabled={true}
-        label="Cruise Id"
-        name={"cruiseId"}
-        value={identification.cruiseId}
+      <Controller
+        control={form.control}
+        name="identification.cruiseId"
+        render={({ field }) => (
+          <TextInput
+            label="Cruise Id"
+            {...field}
+          />
+        )}
       />
-      <TextInput
-        label="Cruise Name"
-        name={"cruiseName"}
-        value={identification.cruiseName}
-        onChange={(e) => console.log(e.target.value)}
+
+      <Controller
+        control={form.control}
+        name="identification.cruiseName"
+        render={({ field }) => (
+          <TextInput
+            label="Cruise Name"
+            {...field}
+          />
+        )}
       />
-      <TextInput
-        disabled={true}
-        label="Creation Date"
-        name={"creationDate"}
-        value={identification.creationDate}
+
+      <Controller
+        control={form.control}
+        name="identification.creationDate"
+        render={({ field }) => (
+          <TextInput
+            label="Creation Date"
+            {...field}
+          />
+        )}
       />
-      <TextInput
-        disabled={true}
-        label="Revision Date"
-        name={"revisionDate"}
-        value={identification.revisionDate}
+
+      <Controller
+        control={form.control}
+        name="identification.revisionDate"
+        render={({ field }) => (
+          <TextInput
+            label="Revision Date"
+            {...field}
+          />
+        )}
       />
-      <TextInput label="Author" name={"author"} value={identification.author} />
+
+      <Controller
+        control={form.control}
+        name="identification.author"
+        render={({ field }) => (
+          <TextInput
+            label="Author"
+            {...field}
+          />
+        )}
+      />
     </>
   );
 };
