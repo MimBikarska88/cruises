@@ -1,81 +1,37 @@
 import styles from "../CruiseForm.module.css";
+import TextInput from "../../BaseComponents/TextInput/TextInput";
 const Identification = ({ identification, setIdentification }) => {
+  // must use state or context in next step to keep track of the input values
+  // onChange for each input must be provided
+  // value prop for each input must be set accordingly
+
   return (
     <>
-      <div className="mt-10">
-        <label className={`d-inline-block ${styles.label}`} for="cruiseId">
-          Cruise Id
-        </label>
-        <input
-          type="text"
-          name="cruiseId"
-          disabled
-          value={identification.cruiseId}
-          className={`single-input d-inline-block btn-outline-dark ${styles["single-input"]}`}
-        />
-      </div>
-      <div className="mt-10">
-        <label className={`d-inline-block ${styles.label}`} for="cruiseId">
-          Cruise Name
-        </label>
-        <input
-          type="text"
-          name="cruiseId"
-          required
-          value={identification.cruiseName}
-          onChange={(e) => {
-            console.log(e.target.value);
-          }}
-          className={`single-input d-inline-block btn-outline-dark ${styles["single-input"]}`}
-        />
-      </div>
-      <div className="mt-10">
-        <label className={`d-inline-block ${styles.label}`} for="cruiseId">
-          Creation date
-        </label>
-        <input
-          type="text"
-          name="creationDate"
-          required
-          disabled
-          value={identification.creationDate}
-          onChange={(e) => {
-            console.log(e.target.value);
-          }}
-          className={`single-input d-inline-block btn-outline-dark ${styles["single-input"]}`}
-        />
-      </div>
-      <div className="mt-10">
-        <label className={`d-inline-block ${styles.label}`} for="cruiseId">
-          Revision Date
-        </label>
-        <input
-          type="text"
-          name="revisionDate"
-          required
-          disabled
-          value={identification.revisionDate}
-          onChange={(e) => {
-            console.log(e.target.value);
-          }}
-          className={`single-input d-inline-block btn-outline-dark ${styles["single-input"]}`}
-        />
-      </div>
-      <div className="mt-10">
-        <label className={`d-inline-block ${styles.label}`} for="cruiseId">
-          Author
-        </label>
-        <input
-          type="text"
-          name="author"
-          required
-          value={identification.author}
-          onChange={(e) => {
-            console.log(e.target.value);
-          }}
-          className={`single-input d-inline-block btn-outline-dark ${styles["single-input"]}`}
-        />
-      </div>
+      <TextInput
+        disabled={true}
+        label="Cruise Id"
+        name={"cruiseId"}
+        value={identification.cruiseId}
+      />
+      <TextInput
+        label="Cruise Name"
+        name={"cruiseName"}
+        value={identification.cruiseName}
+        onChange={(e) => console.log(e.target.value)}
+      />
+      <TextInput
+        disabled={true}
+        label="Creation Date"
+        name={"creationDate"}
+        value={identification.creationDate}
+      />
+      <TextInput
+        disabled={true}
+        label="Revision Date"
+        name={"revisionDate"}
+        value={identification.revisionDate}
+      />
+      <TextInput label="Author" name={"author"} value={identification.author} />
     </>
   );
 };
