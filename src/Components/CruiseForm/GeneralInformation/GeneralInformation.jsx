@@ -1,6 +1,7 @@
 import HorizontalTabs from "../../BaseComponents/Tabs/HorizontalTabs";
 import CollateCenter from "./CollateCenter";
 import Objectives from "./Objectives";
+import Cruise from "./Cruise";
 const GeneralInformation = () => {
   return (
     <>
@@ -9,7 +10,7 @@ const GeneralInformation = () => {
         tabs={[
           {
             name: "Cruise",
-            content: <p>Cruise</p>,
+            content: <Cruise />,
           },
           {
             name: "Objectives and Brief of cruise",

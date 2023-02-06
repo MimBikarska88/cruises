@@ -6,7 +6,7 @@ const Objectives = () => {
         <label className={`d-inline-block ${styles.label}`} for="cruiseId">
           Objective/Purpose of the cruise *
         </label>
-        <div class="mt-10">
+        <div className="mt-10">
           <textarea
             className={`single-textarea btn-outline-dark ${styles["single-input"]}`}
             required

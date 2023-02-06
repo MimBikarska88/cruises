@@ -54,6 +54,15 @@
   scrollbar-width: 2px;
   overflow-y: scroll;
 }
+
+.cruise-info {
+  color: #000000;
+  height: 600px;
+  scrollbar-width: 2px;
+  overflow-y: scroll;
+  width: auto;
+}
+
 ::-webkit-scrollbar {
   width: 5px;
 }
@@ -73,4 +82,19 @@
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #a8a3a300;
+}
+
+.select {
+  outline: #343a40;
+}
+.select:active {
+  background-color: #ffffff !important;
+  color: black !important;
+}
+.select:focus {
+  border-color: #000000 !important;
+}
+.select > option {
+  color: black !important;
+  background-color: rgb(208, 226, 243) !important;
 }
