@@ -1,5 +1,6 @@
 import styles from ".././CruiseForm.module.css";
 import Button from "../../BaseComponents/Button/Button";
+import TextInput from "../../BaseComponents/TextInput/TextInput";
 const OrganizationList = ({
   Organizations = [],
   currentOrganization,
@@ -37,122 +38,78 @@ const OrganizationList = ({
           <div className={`col ${styles["organizations-info"]}`}>
             <div className="ml-4">
               <h4 className="pb-2">Cited Responsible party</h4>
-              <div className="mt-10">
-                <label className={`d-inline-block ${styles.label}`}>
-                  Organization Name
-                </label>
-                <input
-                  type="text"
-                  name="organizationName"
-                  disabled
-                  value={currentOrganization.name}
-                  className={`single-input d-inline-block btn-outline-dark ${styles["single-input"]}`}
-                />
-              </div>
-              <div className="mt-10">
-                <label className={`d-inline-block ${styles.label}`}>Code</label>
-                <input
-                  type="text"
-                  name="code"
-                  disabled
-                  value={currentOrganization.code}
-                  className={`single-input d-inline-block btn-outline-dark ${styles["single-input"]}`}
-                />
-              </div>
+              <TextInput
+                disabled={true}
+                label="Organization Name"
+                name={"organizationName"}
+                value={currentOrganization.name}
+                className={`${styles["single-input"]}`}
+              />
+              <TextInput
+                disabled={true}
+                label="Code"
+                name={"organizationCode"}
+                value={currentOrganization.code}
+                className={`${styles["single-input"]}`}
+              />
               <h4 className="pb-2">Contact Information</h4>
-              <div className="mt-10">
-                <label className={`d-inline-block ${styles.label}`}>
-                  Phone
-                </label>
-                <input
-                  type="text"
-                  name="organizationPhone"
-                  disabled
-                  value={currentOrganization.phone}
-                  className={`single-input d-inline-block btn-outline-dark ${styles["single-input"]}`}
-                />
-              </div>
-              <div className="mt-10">
-                <label className={`d-inline-block ${styles.label}`}>Fax</label>
-                <input
-                  type="text"
-                  name="organizationName"
-                  disabled
-                  value={currentOrganization.fax}
-                  className={`single-input d-inline-block btn-outline-dark ${styles["single-input"]}`}
-                />
-              </div>
+              <TextInput
+                disabled={true}
+                label="Phone"
+                name={"organizationPhone"}
+                value={currentOrganization.phone}
+                className={`${styles["single-input"]}`}
+              />
+              <TextInput
+                disabled={true}
+                label="Fax"
+                name={"organizationFax"}
+                value={currentOrganization.fax}
+                className={`${styles["single-input"]}`}
+              />
               <h4 className="pb-2">Address</h4>
-              <div className="mt-10">
-                <label className={`d-inline-block ${styles.label}`}>
-                  Delivery point
-                </label>
-                <input
-                  type="text"
-                  name="organizationName"
-                  disabled
-                  value={currentOrganization.deliveryPoint}
-                  className={`single-input d-inline-block btn-outline-dark ${styles["single-input"]}`}
-                />
-              </div>
-              <div className="mt-10">
-                <label className={`d-inline-block ${styles.label}`}>City</label>
-                <input
-                  type="text"
-                  name="organizationName"
-                  disabled
-                  value={currentOrganization.city}
-                  className={`single-input d-inline-block btn-outline-dark ${styles["single-input"]}`}
-                />
-              </div>
-              <div className="mt-10">
-                <label className={`d-inline-block ${styles.label}`}>
-                  Postal Code
-                </label>
-                <input
-                  type="text"
-                  name="organizationName"
-                  disabled
-                  value={currentOrganization.postalCode}
-                  className={`single-input d-inline-block btn-outline-dark ${styles["single-input"]}`}
-                />
-              </div>
-              <div className="mt-10">
-                <label className={`d-inline-block ${styles.label}`}>
-                  Country
-                </label>
-                <input
-                  type="text"
-                  name="organizationName"
-                  disabled
-                  value={currentOrganization.country}
-                  className={`single-input d-inline-block btn-outline-dark ${styles["single-input"]}`}
-                />
-              </div>
-              <div className="mt-10">
-                <label className={`d-inline-block ${styles.label}`}>
-                  Email
-                </label>
-                <input
-                  type="text"
-                  name="organizationName"
-                  disabled
-                  value={currentOrganization.email}
-                  className={`single-input d-inline-block btn-outline-dark ${styles["single-input"]}`}
-                />
-              </div>
-              <div className="mt-20">
-                <label className={`d-inline-block ${styles.label}`}>
-                  Web Site
-                </label>
-                <input
-                  type="text"
-                  name="organizationName"
-                  disabled
-                  value={currentOrganization.website}
-                  className={`single-input d-inline-block btn-outline-dark ${styles["single-input"]}`}
-                />
-              </div>
+              <TextInput
+                disabled={true}
+                label="Delivery point"
+                name={"organizationDeliveryPoint"}
+                value={currentOrganization.deliveryPoint}
+                className={`${styles["single-input"]}`}
+              />
+              <TextInput
+                disabled={true}
+                label="City"
+                name={"organizationCity"}
+                value={currentOrganization.city}
+                className={`${styles["single-input"]}`}
+              />
+              <TextInput
+                disabled={true}
+                label="Postal Code"
+                name={"organizationPostalCode"}
+                value={currentOrganization.postalCode}
+                className={`${styles["single-input"]}`}
+              />
+              <TextInput
+                disabled={true}
+                label="Country"
+                name={"organizationCountry"}
+                value={currentOrganization.country}
+                className={`${styles["single-input"]}`}
+              />
+              <TextInput
+                disabled={true}
+                label="Email"
+                name={"organizationEmail"}
+                value={currentOrganization.email}
+                className={`${styles["single-input"]}`}
+              />
+              <TextInput
+                disabled={true}
+                label="Website"
+                name={"organizationWebSite"}
+                value={currentOrganization.website}
+                className={`${styles["single-input"]}`}
+              />
             </div>
           </div>
         </div>
