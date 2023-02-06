@@ -1,28 +1,36 @@
-import { useEffect, useState } from "react";
+/**
+ * External Dependencies.
+ */
+import { useState } from "react";
+
+/**
+ * Internal Dependencies.
+ */
 import Button from "../Button/Button";
 import styles from "./Tabs.module.css";
-const Tabs = ({ title, tabs = {} }) => {
-  const [activeTabIndex, setActiveTabIndex] = useState(0);
 
-  const activateTab = (index) => {
-    setActiveTabIndex(index);
-  };
+const Tabs = (props) => {
+  const { tabs = [] } = props;
+
+  const [activeTabIndex, setActiveTabIndex] = useState(0);
 
   return (
     <div className="d-flex pt-3 align-items-start">
-      {Object.keys(tabs).length > 0 && (
+      {tabs.length > 0 && (
         <>
           <div>
             {tabs.map((tab, index) => (
               <Button
-                onClick={() => activateTab(index)}
+                key={index}
+                onClick={() => setActiveTabIndex(index)}
                 className={`form-btn m-3 nav-link ${
-                  index === activateTab ? "active" : ""
+                  index === activeTabIndex ? "active" : ""
                 }`}
                 value={tab.name}
-              ></Button>
+              />
             ))}
           </div>
+
           <div
             className={`tab-content ml-4 col-lg-9 ${styles["tabs-border"]}`}
             id="v-pills-tabContent"

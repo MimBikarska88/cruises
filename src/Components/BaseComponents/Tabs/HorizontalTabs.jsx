@@ -1,28 +1,36 @@
+/**
+ * External Dependencies.
+ */
+import { useState } from "react";
+
+/**
+ * Internal Dependencies.
+ */
 import Button from "../Button/Button";
 import styles from "../../CruiseForm/CruiseForm.module.css";
-import { useState } from "react";
-const HorizontalTabs = ({ title, tabs = {} }) => {
-  const [activeTabIndex, setActiveTabIndex] = useState(0);
 
-  const activateTab = (index) => {
-    setActiveTabIndex(index);
-  };
+const HorizontalTabs = (props) => {
+  const { tabs = [] } = props;
+
+  const [activeTabIndex, setActiveTabIndex] = useState(0);
 
   return (
     <ul className="nav nav-tabs">
-      {Object.keys(tabs).length > 0 && (
+      {tabs.length > 0 && (
         <>
           <li>
             {tabs.map((tab, index) => (
               <Button
-                onClick={() => activateTab(index)}
+                key={index}
+                onClick={() => setActiveTabIndex(index)}
                 className={` m-1 nav-item text-wrap w-10 ${
-                  index === activateTab ? "active" : ""
+                  index === activeTabIndex ? "active" : ""
                 }`}
                 value={tab.name}
-              ></Button>
+              />
             ))}
           </li>
+
           <div
             className={`tab-content ml-4 col-lg-9 ${styles["tabs-border"]}`}
             id="v-pills-tabContent"
@@ -41,4 +49,5 @@ const HorizontalTabs = ({ title, tabs = {} }) => {
     </ul>
   );
 };
+
 export default HorizontalTabs;
