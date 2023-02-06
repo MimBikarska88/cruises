@@ -52,6 +52,7 @@ const Identification = () => {
         render={({ field }) => (
           <TextInput
             label="Revision Date"
+            disabled
             {...field}
           />
         )}
@@ -63,6 +64,7 @@ const Identification = () => {
         render={({ field }) => (
           <TextInput
             label="Author"
+            disabled
             {...field}
           />
         )}

@@ -60,6 +60,7 @@ const Cruise = () => {
                   render={({field}) => (
                     <TextInput
                       label="Country"
+                      disabled
                       {...field}
                     />
                   )}
@@ -73,6 +74,7 @@ const Cruise = () => {
                   render={({field}) => (
                     <TextInput
                       label="Code"
+                      disabled
                       {...field}
                     />
                   )}
@@ -92,6 +94,7 @@ const Cruise = () => {
                   render={({field}) => (
                     <TextInput
                       label="Port"
+                      disabled
                       {...field}
                     />
                   )}
@@ -105,6 +108,7 @@ const Cruise = () => {
                   render={({field}) => (
                     <TextInput
                       label="Code"
+                      disabled
                       {...field}
                     />
                   )}
@@ -125,6 +129,7 @@ const Cruise = () => {
                   render={({field}) => (
                     <TextInput
                       label="Country"
+                      disabled
                       {...field}
                     />
                   )}
@@ -138,6 +143,7 @@ const Cruise = () => {
                   render={({field}) => (
                     <TextInput
                       label="Code"
+                      disabled
                       {...field}
                     />
                   )}
@@ -157,6 +163,7 @@ const Cruise = () => {
                   render={({field}) => (
                     <TextInput
                       label="Port"
+                      disabled
                       {...field}
                     />
                   )}
@@ -170,6 +177,7 @@ const Cruise = () => {
                   render={({field}) => (
                     <TextInput
                       label="Code"
+                      disabled
                       {...field}
                     />
                   )}
@@ -192,6 +200,7 @@ const Cruise = () => {
                 render={({field}) => (
                   <TextInput
                     label="Code"
+                    disabled
                     {...field}
                   />
                 )}
@@ -205,6 +214,7 @@ const Cruise = () => {
                 render={({field}) => (
                   <TextInput
                     label="Name"
+                    disabled
                     {...field}
                   />
                 )}
@@ -217,6 +227,7 @@ const Cruise = () => {
               render={({field}) => (
                 <TextArea
                   label="Definition"
+                  disabled
                   {...field}
                 />
               )}
