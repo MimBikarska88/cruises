@@ -6,7 +6,7 @@ const Cruises = () => {
       <Routes>
         <Route path="/" element={<h2>Home</h2>} />
         <Route path="/about" element={<h2>About</h2>} />
-        <Route path="/cruise-report" element={<CruiseReport />} />
+        <Route path="/cruise-report*" element={<CruiseReport />} />
         <Route path="/gallery" element={<h2>Gallery</h2>} />
         <Route path="/contact" element={<h2>Contact</h2>} />
       </Routes>

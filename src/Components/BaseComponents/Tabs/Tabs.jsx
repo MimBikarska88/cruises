@@ -2,6 +2,7 @@
  * External Dependencies.
  */
 import { useState } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 /**
  * Internal Dependencies.
@@ -12,8 +13,14 @@ import styles from "./Tabs.module.css";
 const Tabs = (props) => {
   const { tabs = [] } = props;
 
+  const navigate = useNavigate();
+
   const [activeTabIndex, setActiveTabIndex] = useState(0);
 
+  const activateTab = (e, index) => {
+    navigate(`${tabs[index].path}`);
+    setActiveTabIndex(index);
+  };
   return (
     <div className="d-flex pt-3 align-items-start">
       {tabs.length > 0 && (
@@ -22,7 +29,7 @@ const Tabs = (props) => {
             {tabs.map((tab, index) => (
               <Button
                 key={index}
-                onClick={() => setActiveTabIndex(index)}
+                onClick={(e) => activateTab(e, index)}
                 className={`form-btn m-3 nav-link ${
                   index === activeTabIndex ? "active" : ""
                 }`}
@@ -41,7 +48,15 @@ const Tabs = (props) => {
               role="tabpanel"
               aria-labelledby="v-pills-home-tab"
             >
-              {tabs[activeTabIndex].content}
+              <Routes>
+                {tabs.map((t) => (
+                  <Route
+                    key={`${t.path}`}
+                    element={t.content}
+                    path={`${t.path}`}
+                  ></Route>
+                ))}
+              </Routes>
             </div>
           </div>
         </>

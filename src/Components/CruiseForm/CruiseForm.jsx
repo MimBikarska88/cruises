@@ -9,12 +9,11 @@ import { useForm, FormProvider } from "react-hook-form";
 import Tabs from "../BaseComponents/Tabs/Tabs";
 import Identification from "./Identification/Identification";
 import GeneralInformation from "./GeneralInformation/GeneralInformation";
-import HorizontalTabs from "../BaseComponents/Tabs/HorizontalTabs";
 
 const CruiseForm = () => {
   const form = useForm({
     shouldUnregister: false,
-    mode: 'onChange',
+    mode: "onChange",
     defaultValues: {
       identification: {
         cruiseId: "",
@@ -25,27 +24,27 @@ const CruiseForm = () => {
       },
       general: {
         cruise: {
-          startDate: '',
-          endDate: '',
-          countryName: '',
-          countryCode: '',
-          portName: '',
-          portCode: '',
-          returnCountryName: '',
-          returnCountryCode: '',
-          returnPortName: '',
-          returnPortCode: '',
-          dataAccessRestrictionCode: '',
-          dataAccessRestrictionName: '',
-          dataAccessRestrictionDefinition: '',
+          startDate: "",
+          endDate: "",
+          countryName: "",
+          countryCode: "",
+          portName: "",
+          portCode: "",
+          returnCountryName: "",
+          returnCountryCode: "",
+          returnPortName: "",
+          returnPortCode: "",
+          dataAccessRestrictionCode: "",
+          dataAccessRestrictionName: "",
+          dataAccessRestrictionDefinition: "",
         },
         objectives: {
-          purpose: '',
-          project: '',
-        }
-      }
-    }
-  })
+          purpose: "",
+          project: "",
+        },
+      },
+    },
+  });
 
   return (
     <FormProvider {...form}>
@@ -55,37 +54,33 @@ const CruiseForm = () => {
           tabs={[
             {
               name: "Identification",
-              content: (
-                <Identification />
-              ),
+              content: <Identification />,
+              path: "identification",
             },
             {
               name: "General Information",
               content: <GeneralInformation />,
+              path: "general-information",
             },
             {
               name: "Mooring",
-              content: (
-                <HorizontalTabs
-                  title="Horizontal Tabs"
-                  tabs={[
-                    { name: "Tab 1", content: "hey" },
-                    { name: "Tab 2", content: "Hey hey" },
-                  ]}
-                />
-              ),
+              content: <p></p>,
+              path: "mooring",
             },
             {
               name: "Measurement",
               content: <p>Hello there again again again</p>,
+              path: "measurement",
             },
             {
               name: "Geographical Area",
               content: <p>Hello there again again again</p>,
+              path: "geographical-area",
             },
             {
               name: "Documentation",
               content: <p>Hello there again again again</p>,
+              path: "documentation",
             },
           ]}
         />
