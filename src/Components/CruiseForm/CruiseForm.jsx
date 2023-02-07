@@ -60,7 +60,7 @@ const CruiseForm = () => {
             {
               name: "General Information",
               content: <GeneralInformation />,
-              path: "general-information",
+              path: "general-information/*",
             },
             {
               name: "Mooring",

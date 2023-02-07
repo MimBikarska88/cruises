@@ -12,24 +12,33 @@ const GeneralInformation = () => {
           {
             name: "Cruise",
             content: <Cruise />,
+            path: "cruise",
           },
           {
             name: "Objectives and Brief of cruise",
             content: <Objectives />,
+            path: "purpose-and-objectives",
           },
           {
             name: "Platform",
             content: <p>Platform</p>,
+            path: "platform",
           },
           {
             name: "Parameters and insturments",
-            content: "Parameters and Instruments",
+            content: <p>Parameters and Instruments</p>,
+            path: "parameters-and-instruments",
           },
           {
             name: "Responsible Party",
-            content: "Responsible party",
+            content: <p>Responsible party</p>,
+            path: "reasonable-party",
           },
-          { name: "Collate Center", content: <CollateCenter /> },
+          {
+            name: "Collate Center",
+            content: <CollateCenter />,
+            path: "collate-center",
+          },
         ]}
       />
     </>
