@@ -2,7 +2,7 @@ import HorizontalTabs from "../../BaseComponents/Tabs/HorizontalTabs";
 import CollateCenter from "./CollateCenter";
 import Objectives from "./Objectives";
 import Cruise from "./Cruise";
-
+import Platform from "./Platform";
 const GeneralInformation = () => {
   return (
     <>
@@ -21,7 +21,7 @@ const GeneralInformation = () => {
           },
           {
             name: "Platform",
-            content: <p>Platform</p>,
+            content: <Platform />,
             path: "platform",
           },
           {

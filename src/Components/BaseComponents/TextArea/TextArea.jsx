@@ -9,12 +9,7 @@ import { forwardRef } from "react";
 import styles from "../../CruiseForm/CruiseForm.module.css";
 
 const TextArea = forwardRef((props, ref) => {
-  const {
-    label,
-    className = "",
-    name,
-    ...rest
-  } = props;
+  const { label, className = "", name, disabled, ...rest } = props;
 
   return (
     <div className="mt-10">
@@ -26,6 +21,7 @@ const TextArea = forwardRef((props, ref) => {
         ref={ref}
         className={`single-textarea btn-outline-dark ${styles["single-input"]} ${className}`}
         name={name}
+        disabled={disabled}
         {...rest}
       />
     </div>
