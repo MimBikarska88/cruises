@@ -51,49 +51,65 @@ const Table = (props) => {
   return (
     <>
       <h4 className="text-center mt-3 mb-3">{title}</h4>
-      <div className={`${styles.tableFrame}`}>
-        <GlobalFilter
-          filter={globalFilter}
-          setFilter={setGlobalFilter}
-        ></GlobalFilter>
-        <table
-          {...getTableProps()}
-          className={`table table-bordered ${styles.table}`}
-        >
-          <thead>
-            {headerGroups.map((headerGroup) => (
-              <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column) => (
-                  <th {...column.getHeaderProps()}>
-                    {column.render("Header")}
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody {...getTableBodyProps()}>
-            {rows.map((row) => {
-              prepareRow(row);
-              return (
-                <tr {...row.getRowProps()}>
-                  {row.cells.map((cell) => {
+
+      <div className="d-grid">
+        <div className="row">
+          <div className="col">
+            <div className="">
+              <ul class="list-group d-block list-group-flush">
+                {selectedFlatRows
+                  .map((row) => row.values)
+                  .map((value) => (
+                    <li className="list-group-item">
+                      {value.code} - {value.name}
+                    </li>
+                  ))}
+              </ul>
+            </div>
+          </div>
+          <div className="col">
+            <div className={`${styles.tableFrame}`}>
+              <GlobalFilter
+                filter={globalFilter}
+                setFilter={setGlobalFilter}
+              ></GlobalFilter>
+              <table
+                {...getTableProps()}
+                className={`table table-bordered ${styles.table}`}
+              >
+                <thead>
+                  {headerGroups.map((headerGroup) => (
+                    <tr {...headerGroup.getHeaderGroupProps()}>
+                      {headerGroup.headers.map((column) => (
+                        <th {...column.getHeaderProps()}>
+                          {column.render("Header")}
+                        </th>
+                      ))}
+                    </tr>
+                  ))}
+                </thead>
+                <tbody {...getTableBodyProps()}>
+                  {rows.map((row) => {
+                    prepareRow(row);
                     return (
-                      <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                      <tr {...row.getRowProps()}>
+                        {row.cells.map((cell) => {
+                          return (
+                            <td {...cell.getCellProps()}>
+                              {cell.render("Cell")}
+                            </td>
+                          );
+                        })}
+                      </tr>
                     );
                   })}
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
-      <div>
-        <Button
-          className="d-block m-auto mt-4"
-          value="Show Rows"
-          onClick={callback(selectedFlatRows.map((row) => row.values))}
-        ></Button>
-      </div>
+
       <div className="mt-2">{props.children}</div>
     </>
   );
