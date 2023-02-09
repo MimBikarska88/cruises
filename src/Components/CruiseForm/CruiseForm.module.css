@@ -69,11 +69,6 @@
 }
 .cruise-table {
   color: #000000;
-  height: 650px;
-  scrollbar-width: 2px;
-  overflow-y: scroll;
-  width: auto;
-  background-color: aliceblue;
 }
 ::-webkit-scrollbar {
   width: 5px;

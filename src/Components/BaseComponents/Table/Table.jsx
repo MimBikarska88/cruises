@@ -4,7 +4,7 @@ import Checkbox from "../CheckBox/CheckBox";
 import GlobalFilter from "../GlobalFilter/GlobalFilter";
 import styles from "./Table.module.css";
 const Table = (props) => {
-  const { cols, data } = props;
+  const { cols, data, title } = props;
 
   const tableColumns = useMemo(() => cols, []);
   const tableData = useMemo(() => data, []);
@@ -49,38 +49,44 @@ const Table = (props) => {
 
   return (
     <>
-      <GlobalFilter
-        filter={globalFilter}
-        setFilter={setGlobalFilter}
-      ></GlobalFilter>
-      <table
-        {...getTableProps()}
-        className={`table table-bordered ${styles.table}`}
-      >
-        <thead>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps()}>{column.render("Header")}</th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-          {rows.map((row) => {
-            prepareRow(row);
-            return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map((cell) => {
-                  return (
-                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-                  );
-                })}
+      <h4 className="text-center mt-3 mb-3">{title}</h4>
+      <div className={`${styles.tableFrame}`}>
+        <GlobalFilter
+          filter={globalFilter}
+          setFilter={setGlobalFilter}
+        ></GlobalFilter>
+        <table
+          {...getTableProps()}
+          className={`table table-bordered ${styles.table}`}
+        >
+          <thead>
+            {headerGroups.map((headerGroup) => (
+              <tr {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map((column) => (
+                  <th {...column.getHeaderProps()}>
+                    {column.render("Header")}
+                  </th>
+                ))}
               </tr>
-            );
-          })}
-        </tbody>
-      </table>
+            ))}
+          </thead>
+          <tbody {...getTableBodyProps()}>
+            {rows.map((row) => {
+              prepareRow(row);
+              return (
+                <tr {...row.getRowProps()}>
+                  {row.cells.map((cell) => {
+                    return (
+                      <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                    );
+                  })}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+      <div className="mt-2">{props.children}</div>
     </>
   );
 };

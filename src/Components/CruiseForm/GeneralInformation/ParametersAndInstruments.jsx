@@ -6,7 +6,7 @@ const ParametersAndInstruments = () => {
   return (
     <>
       <div className={`${styles["cruise-table"]}`}>
-        <Table cols={columns} data={tableData} />
+        <Table cols={columns} data={tableData} title="Parameters" />
       </div>
     </>
   );

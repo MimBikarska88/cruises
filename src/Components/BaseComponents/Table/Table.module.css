@@ -1,7 +1,13 @@
+.tableFrame {
+  height: 400px;
+  scrollbar-width: 2px;
+  overflow-y: scroll;
+  width: auto;
+  background-color: aliceblue;
+}
 .table {
   background-color: aliceblue;
   font-size: small;
-  overflow-x: auto;
   font-weight: bold;
 }
 .table th {
