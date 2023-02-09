@@ -13,12 +13,8 @@ const ParametersAndInstruments = () => {
   return (
     <>
       <div className={`${styles["cruise-table"]}`}>
-        <Table
-          cols={columns}
-          data={tableData}
-          title="Parameters"
-          callback={updateSelectedRows}
-        ></Table>
+        <Table cols={columns} data={tableData} title="Parameters"></Table>
+        <Table cols={columns} data={tableData} title="Instruments"></Table>
       </div>
     </>
   );

@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { useTable, useGlobalFilter, useRowSelect } from "react-table";
 import Button from "../Button/Button";
 import Checkbox from "../CheckBox/CheckBox";
@@ -9,6 +9,8 @@ const Table = (props) => {
 
   const tableColumns = useMemo(() => cols, []);
   const tableData = useMemo(() => data, []);
+
+  const [displayRows, setDisplayRows] = useState([]);
 
   const tableInstance = useTable(
     {
@@ -51,20 +53,25 @@ const Table = (props) => {
   return (
     <>
       <h4 className="text-center mt-3 mb-3">{title}</h4>
-
       <div className="d-grid">
         <div className="row">
           <div className="col">
-            <div className="">
-              <ul class="list-group d-block list-group-flush">
-                {selectedFlatRows
-                  .map((row) => row.values)
-                  .map((value) => (
-                    <li className="list-group-item">
-                      {value.code} - {value.name}
-                    </li>
-                  ))}
-              </ul>
+            <div className={styles.selectedRows}>
+              {displayRows.length === 0 ? (
+                <>
+                  <div>No {title} selected</div>
+                </>
+              ) : (
+                <ul class="list-group d-block list-group-flush">
+                  {selectedFlatRows
+                    .map((row) => row.values)
+                    .map((value) => (
+                      <li className="list-group-item">
+                        {value.code} - {value.name}
+                      </li>
+                    ))}
+                </ul>
+              )}
             </div>
           </div>
           <div className="col">
@@ -109,8 +116,13 @@ const Table = (props) => {
           </div>
         </div>
       </div>
-
-      <div className="mt-2">{props.children}</div>
+      <div className="d-block mt-3">
+        <Button
+          className="d-block m-auto mt-2 mb-2"
+          value="Save"
+          onClick={() => setDisplayRows(selectedFlatRows)}
+        ></Button>
+      </div>
     </>
   );
 };

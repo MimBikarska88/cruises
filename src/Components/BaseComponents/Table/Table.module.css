@@ -2,7 +2,6 @@
   height: 400px;
   scrollbar-width: 2px;
   overflow-y: scroll;
-  width: auto;
   background-color: aliceblue;
 }
 .table {
@@ -12,4 +11,8 @@
 }
 .table th {
   font-size: medium;
+}
+.selectedRows {
+  overflow-y: scroll;
+  height: 400px;
 }
