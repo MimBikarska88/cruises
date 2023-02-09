@@ -73,6 +73,7 @@
   scrollbar-width: 2px;
   overflow-y: scroll;
   width: auto;
+  background-color: aliceblue;
 }
 ::-webkit-scrollbar {
   width: 5px;

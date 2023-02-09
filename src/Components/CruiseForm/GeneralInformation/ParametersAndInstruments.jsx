@@ -1,4 +1,4 @@
-import tableData from "./TableData/MOCK_DATA.json";
+import tableData from "./TableData/test_data.json";
 import { columns } from "./TableData/Columns";
 import Table from "../../BaseComponents/Table/Table";
 import styles from "../CruiseForm.module.css";

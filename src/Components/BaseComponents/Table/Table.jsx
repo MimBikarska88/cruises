@@ -1,5 +1,6 @@
 import { useMemo } from "react";
-import { useTable, useGlobalFilter } from "react-table";
+import { useTable, useGlobalFilter, useRowSelect } from "react-table";
+import Checkbox from "../CheckBox/CheckBox";
 import GlobalFilter from "../GlobalFilter/GlobalFilter";
 import styles from "./Table.module.css";
 const Table = (props) => {
@@ -13,7 +14,24 @@ const Table = (props) => {
       columns: tableColumns,
       data: tableData,
     },
-    useGlobalFilter
+    useGlobalFilter,
+    useRowSelect,
+    (hooks) => {
+      hooks.visibleColumns.push((tableColumns) => {
+        return [
+          {
+            id: "selection",
+            Header: ({ getToggleAllRowsSelectedProps }) => (
+              <Checkbox {...getToggleAllRowsSelectedProps()} />
+            ),
+            Cell: ({ row }) => (
+              <Checkbox {...row.getToggleRowSelectedProps()} />
+            ),
+          },
+          ...tableColumns,
+        ];
+      });
+    }
   );
 
   const {
@@ -24,6 +42,7 @@ const Table = (props) => {
     prepareRow,
     state,
     setGlobalFilter,
+    selectedFlatRows,
   } = tableInstance;
 
   const { globalFilter } = state;
