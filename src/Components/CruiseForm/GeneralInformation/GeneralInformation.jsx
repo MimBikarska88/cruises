@@ -3,6 +3,7 @@ import CollateCenter from "./CollateCenter";
 import Objectives from "./Objectives";
 import Cruise from "./Cruise";
 import Platform from "./Platform";
+import ParametersAndInstruments from "./ParametersAndInstruments";
 const GeneralInformation = () => {
   return (
     <>
@@ -25,8 +26,8 @@ const GeneralInformation = () => {
             path: "platform",
           },
           {
-            name: "Parameters and insturments",
-            content: <p>Parameters and Instruments</p>,
+            name: "Parameters and Insturments",
+            content: <ParametersAndInstruments />,
             path: "parameters-and-instruments",
           },
           {

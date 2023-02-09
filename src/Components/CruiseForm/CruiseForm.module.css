@@ -67,11 +67,16 @@
   overflow-y: scroll;
   width: auto;
 }
-
+.cruise-table {
+  color: #000000;
+  height: 650px;
+  scrollbar-width: 2px;
+  overflow-y: scroll;
+  width: auto;
+}
 ::-webkit-scrollbar {
   width: 5px;
 }
-
 /* Track */
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px rgb(235, 229, 255);
@@ -86,7 +91,7 @@
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #a8a3a300;
+  background: rgb(44, 39, 61);
 }
 
 .select {
