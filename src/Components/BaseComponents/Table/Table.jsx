@@ -1,10 +1,11 @@
 import { useMemo } from "react";
 import { useTable, useGlobalFilter, useRowSelect } from "react-table";
+import Button from "../Button/Button";
 import Checkbox from "../CheckBox/CheckBox";
 import GlobalFilter from "../GlobalFilter/GlobalFilter";
 import styles from "./Table.module.css";
 const Table = (props) => {
-  const { cols, data, title } = props;
+  const { cols, data, title, callback } = props;
 
   const tableColumns = useMemo(() => cols, []);
   const tableData = useMemo(() => data, []);
@@ -85,6 +86,13 @@ const Table = (props) => {
             })}
           </tbody>
         </table>
+      </div>
+      <div>
+        <Button
+          className="d-block m-auto mt-4"
+          value="Show Rows"
+          onClick={callback(selectedFlatRows.map((row) => row.values))}
+        ></Button>
       </div>
       <div className="mt-2">{props.children}</div>
     </>
