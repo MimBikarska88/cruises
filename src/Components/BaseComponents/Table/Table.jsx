@@ -63,7 +63,7 @@ const Table = (props) => {
                 </>
               ) : (
                 <ul class="list-group d-block list-group-flush">
-                  {selectedFlatRows
+                  {displayRows
                     .map((row) => row.values)
                     .map((value) => (
                       <li className="list-group-item">
