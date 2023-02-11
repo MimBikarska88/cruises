@@ -1,7 +1,7 @@
-import Select from "../../BaseComponents/Select/Select";
-import TextInput from "../../BaseComponents/TextInput/TextInput";
-import TextArea from "../../BaseComponents/TextArea/TextArea";
-import styles from "../../CruiseForm/CruiseForm.module.css";
+import Select from "../../../BaseComponents/Select/Select";
+import TextInput from "../../../BaseComponents/TextInput/TextInput";
+import TextArea from "../../../BaseComponents/TextArea/TextArea";
+import styles from "../../../CruiseForm/CruiseForm.module.css";
 const Platform = () => {
   return (
     <>

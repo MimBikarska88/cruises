@@ -1,8 +1,8 @@
 import tableData from "./TableData/test_data.json";
 import { columns } from "./TableData/Columns";
-import Table from "../../BaseComponents/Table/Table";
+import Table from "../../../BaseComponents/Table/Table";
 import { useState } from "react";
-import styles from "../CruiseForm.module.css";
+import styles from "../../CruiseForm.module.css";
 const ParametersAndInstruments = () => {
   const [parameters, setParameters] = useState([]);
   const [instruments, setInstruments] = useState([]);

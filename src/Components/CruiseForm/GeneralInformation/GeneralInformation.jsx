@@ -1,9 +1,9 @@
 import HorizontalTabs from "../../BaseComponents/Tabs/HorizontalTabs";
-import CollateCenter from "./CollateCenter";
-import Objectives from "./Objectives";
-import Cruise from "./Cruise";
-import Platform from "./Platform";
-import ParametersAndInstruments from "./ParametersAndInstruments";
+import CollateCenter from "./CollateCenter/CollateCenter";
+import Objectives from "./Objectives/Objectives";
+import Cruise from "./Cruise/Cruise";
+import Platform from "./Platform/Platform";
+import ParametersAndInstruments from "./ParametersAndInstruments/ParametersAndInstruments";
 const GeneralInformation = () => {
   return (
     <>
@@ -26,7 +26,7 @@ const GeneralInformation = () => {
             path: "platform",
           },
           {
-            name: "Parameters and Insturments",
+            name: "Parameters and Instruments",
             content: <ParametersAndInstruments />,
             path: "parameters-and-instruments",
           },

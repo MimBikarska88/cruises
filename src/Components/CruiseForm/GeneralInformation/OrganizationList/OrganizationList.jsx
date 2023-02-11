@@ -1,11 +1,12 @@
-import styles from ".././CruiseForm.module.css";
-import Button from "../../BaseComponents/Button/Button";
-import TextInput from "../../BaseComponents/TextInput/TextInput";
+import styles from "../../CruiseForm.module.css";
+import Button from "../../../BaseComponents/Button/Button";
+import TextInput from "../../../BaseComponents/TextInput/TextInput";
 const OrganizationList = ({
   Organizations = [],
   currentOrganization,
   setCurrentOrganization,
-  closeList,
+  closeListSave,
+  closeListCancel,
 }) => {
   return (
     <>
@@ -118,13 +119,13 @@ const OrganizationList = ({
         <Button
           type="button"
           className="m-2"
-          onClick={() => closeList()}
-          value="Save"
+          onClick={() => closeListSave()}
+          value="Add"
         />
         <Button
           type="button"
           className="m-2"
-          onClick={() => closeList()}
+          onClick={() => closeListCancel()}
           value="Cancel"
         />
       </div>

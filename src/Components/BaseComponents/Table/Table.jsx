@@ -1,8 +1,9 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useTable, useGlobalFilter, useRowSelect } from "react-table";
 import Button from "../Button/Button";
 import Checkbox from "../CheckBox/CheckBox";
 import GlobalFilter from "../GlobalFilter/GlobalFilter";
+import TableList from "./TableList";
 import styles from "./Table.module.css";
 const Table = (props) => {
   const { cols, data, title, displayFields, displayRows, setDisplayRows } =
@@ -55,25 +56,11 @@ const Table = (props) => {
       <div className="d-grid">
         <div className="row">
           <div className="col">
-            <div className={styles.selectedRows}>
-              {displayRows.length === 0 ? (
-                <>
-                  <div>No {title} selected</div>
-                </>
-              ) : (
-                <ul class="list-group d-block list-group-flush">
-                  {displayRows
-                    .map((row) => row.values)
-                    .map((value) => (
-                      <li className="list-group-item">
-                        {displayFields
-                          .map((field) => value[`${field}`])
-                          .join(" - ")}
-                      </li>
-                    ))}
-                </ul>
-              )}
-            </div>
+            <TableList
+              displayRows={displayRows}
+              displayFields={displayFields}
+              title={title}
+            />
           </div>
           <div className="col">
             <div className={`${styles.tableFrame}`}>

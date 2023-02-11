@@ -1,5 +1,6 @@
 const names = [
   {
+    id: 1,
     name: "Department of Environment Islamic Republic of Iran",
     code: "4c4cd2f6-b72d-4994-93aa-405be64f524e",
     phone: "0937377747",
@@ -12,6 +13,7 @@ const names = [
     website: "http://iran.obr.com",
   },
   {
+    id: 2,
     name: "Geological Survey of Iran",
     code: "0jf482n6-b72d-4994-93aa-405be64f524e",
     phone: "0537499247",
@@ -24,6 +26,7 @@ const names = [
     website: "http://www.gsi.ir",
   },
   {
+    id: 3,
     name: "I.R of Iran Meteorological Organization",
     code: "641e080d-5691-4726-84a0-a855eed5f221",
     phone: "",
@@ -36,6 +39,7 @@ const names = [
     website: "http://www.irimo.ir",
   },
   {
+    id: 4,
     name: "Iran Fisheries Organization",
     code: "ed3b7a33-3ae2-432a-871f-1cf229e8312b",
     phone: "0229396117",
@@ -48,6 +52,7 @@ const names = [
     website: "http://www.fisheries.ir",
   },
   {
+    id: 5,
     name: "Iran Fisheries Research Institute",
     code: "0jf482n6-b72d-4994-93aa-405be64f524e",
     phone: "",
@@ -60,6 +65,7 @@ const names = [
     website: "http://www.ifro.ir",
   },
   {
+    id: 6,
     name: "Iran National Institute of Oceanography and Atmospheric Science",
     code: "0jf482n6-b72d-4994-93aa-405be64f524e",
     phone: "053700003",
@@ -72,6 +78,7 @@ const names = [
     website: "http://doe.ir",
   },
   {
+    id: 7,
     name: "National Cartographic Center",
     code: "0jf482n6-b72d-4994-93aa-405be64f524e",
     phone: "02000047",
@@ -84,6 +91,7 @@ const names = [
     website: "http://ncc.ir",
   },
   {
+    id: 8,
     name: "Ports and Maritime Organization",
     code: "0jf482n6-b72d-4994-93aa-405be64f524e",
     phone: "0537499247",
@@ -96,6 +104,7 @@ const names = [
     website: "http://pamo.ir",
   },
   {
+    id: 9,
     name: "Water Research Institute",
     code: "0jf123n6-d72d-4994-93aa-405be64f524e",
     phone: "0523599247",

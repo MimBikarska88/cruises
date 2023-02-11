@@ -6,10 +6,10 @@ import { Controller, useFormContext } from "react-hook-form";
 /**
  * Internal Dependencies.
  */
-import styles from "../CruiseForm.module.css";
-import TextInput from "../../BaseComponents/TextInput/TextInput";
-import Select from "../../BaseComponents/Select/Select";
-import TextArea from "../../BaseComponents/TextArea/TextArea";
+import styles from "../../CruiseForm.module.css";
+import TextInput from "../../../BaseComponents/TextInput/TextInput";
+import Select from "../../../BaseComponents/Select/Select";
+import TextArea from "../../../BaseComponents/TextArea/TextArea";
 
 const Cruise = () => {
   const form = useFormContext();
@@ -24,7 +24,7 @@ const Cruise = () => {
             <Controller
               control={form.control}
               name="general.cruise.startDate"
-              render={({field}) => (
+              render={({ field }) => (
                 <TextInput
                   type="datetime-local"
                   label="Start Date"
@@ -38,31 +38,23 @@ const Cruise = () => {
             <Controller
               control={form.control}
               name="general.cruise.endDate"
-              render={({field}) => (
-                <TextInput
-                  type="datetime-local"
-                  label="End Date"
-                  {...field}
-                />
+              render={({ field }) => (
+                <TextInput type="datetime-local" label="End Date" {...field} />
               )}
             />
           </div>
         </div>
         <div className="row mb-5">
           <div className="col">
-            <Select name="countries" title="Country of Departure"/>
+            <Select name="countries" title="Country of Departure" />
 
             <div className="d-flex pt-1">
               <div className="mr-2">
                 <Controller
                   control={form.control}
                   name="general.cruise.countryName"
-                  render={({field}) => (
-                    <TextInput
-                      label="Country"
-                      disabled
-                      {...field}
-                    />
+                  render={({ field }) => (
+                    <TextInput label="Country" disabled {...field} />
                   )}
                 />
               </div>
@@ -71,12 +63,8 @@ const Cruise = () => {
                 <Controller
                   control={form.control}
                   name="general.cruise.countryCode"
-                  render={({field}) => (
-                    <TextInput
-                      label="Code"
-                      disabled
-                      {...field}
-                    />
+                  render={({ field }) => (
+                    <TextInput label="Code" disabled {...field} />
                   )}
                 />
               </div>
@@ -84,19 +72,15 @@ const Cruise = () => {
           </div>
 
           <div className="col">
-            <Select name="countries" title="Port of Departure"/>
+            <Select name="countries" title="Port of Departure" />
 
             <div className="d-flex pt-1">
               <div className="mr-2">
                 <Controller
                   control={form.control}
                   name="general.cruise.portName"
-                  render={({field}) => (
-                    <TextInput
-                      label="Port"
-                      disabled
-                      {...field}
-                    />
+                  render={({ field }) => (
+                    <TextInput label="Port" disabled {...field} />
                   )}
                 />
               </div>
@@ -105,12 +89,8 @@ const Cruise = () => {
                 <Controller
                   control={form.control}
                   name="general.cruise.portCode"
-                  render={({field}) => (
-                    <TextInput
-                      label="Code"
-                      disabled
-                      {...field}
-                    />
+                  render={({ field }) => (
+                    <TextInput label="Code" disabled {...field} />
                   )}
                 />
               </div>
@@ -119,19 +99,15 @@ const Cruise = () => {
         </div>
         <div className="row mb-5">
           <div className="col">
-            <Select name="countries" title="Country of Return"/>
+            <Select name="countries" title="Country of Return" />
 
             <div className="d-flex pt-1">
               <div className="mr-2">
                 <Controller
                   control={form.control}
                   name="general.cruise.returnCountryName"
-                  render={({field}) => (
-                    <TextInput
-                      label="Country"
-                      disabled
-                      {...field}
-                    />
+                  render={({ field }) => (
+                    <TextInput label="Country" disabled {...field} />
                   )}
                 />
               </div>
@@ -140,12 +116,8 @@ const Cruise = () => {
                 <Controller
                   control={form.control}
                   name="general.cruise.returnCountryCode"
-                  render={({field}) => (
-                    <TextInput
-                      label="Code"
-                      disabled
-                      {...field}
-                    />
+                  render={({ field }) => (
+                    <TextInput label="Code" disabled {...field} />
                   )}
                 />
               </div>
@@ -153,19 +125,15 @@ const Cruise = () => {
           </div>
 
           <div className="col">
-            <Select name="ports" title="Port of Return"/>
+            <Select name="ports" title="Port of Return" />
 
             <div className="d-flex pt-1">
               <div className="mr-2">
                 <Controller
                   control={form.control}
                   name="general.cruise.returnPortName"
-                  render={({field}) => (
-                    <TextInput
-                      label="Port"
-                      disabled
-                      {...field}
-                    />
+                  render={({ field }) => (
+                    <TextInput label="Port" disabled {...field} />
                   )}
                 />
               </div>
@@ -174,12 +142,8 @@ const Cruise = () => {
                 <Controller
                   control={form.control}
                   name="general.cruise.returnPortCode"
-                  render={({field}) => (
-                    <TextInput
-                      label="Code"
-                      disabled
-                      {...field}
-                    />
+                  render={({ field }) => (
+                    <TextInput label="Code" disabled {...field} />
                   )}
                 />
               </div>
@@ -189,7 +153,7 @@ const Cruise = () => {
 
         <div className="row mb-5">
           <div className="col">
-            <Select name="countries" title="Data Access Restriction *"/>
+            <Select name="countries" title="Data Access Restriction *" />
           </div>
 
           <div className="col">
@@ -197,12 +161,8 @@ const Cruise = () => {
               <Controller
                 control={form.control}
                 name="general.cruise.dataAccessRestrictionCode"
-                render={({field}) => (
-                  <TextInput
-                    label="Code"
-                    disabled
-                    {...field}
-                  />
+                render={({ field }) => (
+                  <TextInput label="Code" disabled {...field} />
                 )}
               />
             </div>
@@ -211,12 +171,8 @@ const Cruise = () => {
               <Controller
                 control={form.control}
                 name="general.cruise.dataAccessRestrictionName"
-                render={({field}) => (
-                  <TextInput
-                    label="Name"
-                    disabled
-                    {...field}
-                  />
+                render={({ field }) => (
+                  <TextInput label="Name" disabled {...field} />
                 )}
               />
             </div>
@@ -224,12 +180,8 @@ const Cruise = () => {
             <Controller
               control={form.control}
               name="general.cruise.dataAccessRestrictionDefinition"
-              render={({field}) => (
-                <TextArea
-                  label="Definition"
-                  disabled
-                  {...field}
-                />
+              render={({ field }) => (
+                <TextArea label="Definition" disabled {...field} />
               )}
             />
           </div>
