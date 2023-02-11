@@ -5,12 +5,11 @@ import Checkbox from "../CheckBox/CheckBox";
 import GlobalFilter from "../GlobalFilter/GlobalFilter";
 import styles from "./Table.module.css";
 const Table = (props) => {
-  const { cols, data, title, callback } = props;
+  const { cols, data, title, displayFields, displayRows, setDisplayRows } =
+    props;
 
   const tableColumns = useMemo(() => cols, []);
   const tableData = useMemo(() => data, []);
-
-  const [displayRows, setDisplayRows] = useState([]);
 
   const tableInstance = useTable(
     {
@@ -67,7 +66,9 @@ const Table = (props) => {
                     .map((row) => row.values)
                     .map((value) => (
                       <li className="list-group-item">
-                        {value.code} - {value.name}
+                        {displayFields
+                          .map((field) => value[`${field}`])
+                          .join(" - ")}
                       </li>
                     ))}
                 </ul>
