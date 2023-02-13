@@ -6,8 +6,15 @@ import GlobalFilter from "../GlobalFilter/GlobalFilter";
 import TableList from "./TableList";
 import styles from "./Table.module.css";
 const Table = (props) => {
-  const { cols, data, title, displayFields, displayRows, setDisplayRows } =
-    props;
+  const {
+    cols,
+    data,
+    title,
+    displayFields,
+    displayRows,
+    setDisplayRows,
+    delimeter,
+  } = props;
 
   const tableColumns = useMemo(() => cols, []);
   const tableData = useMemo(() => data, []);
@@ -60,6 +67,7 @@ const Table = (props) => {
               displayRows={displayRows}
               displayFields={displayFields}
               title={title}
+              delimeter={delimeter}
             />
           </div>
           <div className="col">

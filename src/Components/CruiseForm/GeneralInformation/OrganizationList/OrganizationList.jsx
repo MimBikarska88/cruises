@@ -1,6 +1,7 @@
 import styles from "../../CruiseForm.module.css";
 import Button from "../../../BaseComponents/Button/Button";
 import TextInput from "../../../BaseComponents/TextInput/TextInput";
+import Table from "../../../BaseComponents/Table/Table";
 const OrganizationList = ({
   Organizations = [],
   currentOrganization,
@@ -24,6 +25,7 @@ const OrganizationList = ({
                   </div>
                   {Organizations.map((o, index) => (
                     <div
+                      key={index}
                       className={`p-1 table-row ${styles["organization-names"]} `}
                       onClick={() =>
                         setCurrentOrganization(Organizations[index])

@@ -4,6 +4,7 @@ import Objectives from "./Objectives/Objectives";
 import Cruise from "./Cruise/Cruise";
 import Platform from "./Platform/Platform";
 import ParametersAndInstruments from "./ParametersAndInstruments/ParametersAndInstruments";
+import ResponsibleParty from "./ResponsibleParty/ResponsibleParty";
 const GeneralInformation = () => {
   return (
     <>
@@ -32,7 +33,7 @@ const GeneralInformation = () => {
           },
           {
             name: "Responsible Party",
-            content: <p>Responsible party</p>,
+            content: <ResponsibleParty />,
             path: "reasonable-party",
           },
           {

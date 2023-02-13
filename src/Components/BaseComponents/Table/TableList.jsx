@@ -1,6 +1,6 @@
 import styles from "./Table.module.css";
 const TableList = (props) => {
-  const { displayFields, displayRows, title } = props;
+  const { displayFields, displayRows, title, delimeter } = props;
   return (
     <>
       <div className={styles.selectedRows}>
@@ -9,12 +9,14 @@ const TableList = (props) => {
             <div>No {title} selected</div>
           </>
         ) : (
-          <ul class="list-group d-block list-group-flush">
+          <ul className="list-group d-block list-group-flush">
             {displayRows
               .map((row) => row.values)
               .map((value) => (
                 <li className="list-group-item">
-                  {displayFields.map((field) => value[`${field}`]).join(" - ")}
+                  {displayFields
+                    .map((field) => value[`${field}`])
+                    .join(delimeter ? delimeter : " - ")}
                 </li>
               ))}
           </ul>

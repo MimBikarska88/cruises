@@ -10,10 +10,10 @@ import styles from "../../CruiseForm/CruiseForm.module.css";
 
 const TextInput = forwardRef((props, ref) => {
   const {
-    label,
+    label = "",
     className = "",
     type = "text",
-    name,
+    name = "",
     ...rest
   } = props;
 
