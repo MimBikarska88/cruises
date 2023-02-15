@@ -44,6 +44,7 @@ const CruiseForm = () => {
         },
         parameters: [],
         instruments: [],
+        collateCenters: [],
       },
     },
   });
