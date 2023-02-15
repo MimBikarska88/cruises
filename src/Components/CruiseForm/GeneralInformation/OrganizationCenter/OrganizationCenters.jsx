@@ -3,7 +3,8 @@ import OrganizationList from "../OrganizationList/OrganizationList";
 import Centers from "../OrganizationCenter/Centers";
 
 const CollateCenter = (props) => {
-  const { organizations, setOrganizations, availableOrganizations } = props;
+  const { organizations, setOrganizations, availableOrganizations, title } =
+    props;
   const [visibleTable, setVisibleTable] = useState(true);
   const [visibleOrganizations, setVisibleOrganizations] = useState(false);
   const [currentOrganization, setCurrentOrganization] = useState({
@@ -57,7 +58,7 @@ const CollateCenter = (props) => {
           organizations={organizations}
           removeOrganization={removeOrganization}
           openOrganizationsList={openOrganizationsList}
-          title="Collate Centers*"
+          title={title}
         />
       )}
     </>

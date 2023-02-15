@@ -15,6 +15,7 @@ const CollateCenter = () => {
         organizations={collateCenters}
         setOrganizations={setCollateCenters}
         availableOrganizations={names}
+        title="Collate Centers"
       />
     </>
   );

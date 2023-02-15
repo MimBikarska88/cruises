@@ -6,9 +6,9 @@ const Centers = (props) => {
   return (
     <>
       <div className="container mt-3">
+        <h4 className="m-3 text-center">{title}</h4>
         <div className="row">
           <div className="col">
-            <h3 className="mb-30 ">{title}</h3>
             <div className={`${styles.organizationsFrame} d-block`}>
               {organizations.length === 0 ? (
                 <h4 className="text-center m-2">No organizations selected</h4>

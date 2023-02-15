@@ -45,6 +45,11 @@ const CruiseForm = () => {
         parameters: [],
         instruments: [],
         collateCenters: [],
+        responsibleParty: {
+          cruiseLeaders: [],
+          chiefScientists: [],
+          originatorCenters: [],
+        },
       },
     },
   });
