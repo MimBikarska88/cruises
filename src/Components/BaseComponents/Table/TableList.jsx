@@ -6,7 +6,7 @@ const TableList = (props) => {
       <div className={styles.selectedRows}>
         {displayRows.length === 0 ? (
           <>
-            <div>No {title} selected</div>
+            <h4 className="text-center m-2">No {title} selected</h4>
           </>
         ) : (
           <ul className="list-group d-block list-group-flush">
