@@ -9,7 +9,7 @@ import { useForm, FormProvider } from "react-hook-form";
 import Tabs from "../BaseComponents/Tabs/Tabs";
 import Identification from "./Identification/Identification";
 import GeneralInformation from "./GeneralInformation/GeneralInformation";
-
+import Mooring from "./GeneralInformation/Mooring/Mooring";
 const CruiseForm = () => {
   const form = useForm({
     shouldUnregister: false,
@@ -74,7 +74,7 @@ const CruiseForm = () => {
             },
             {
               name: "Mooring",
-              content: <p></p>,
+              content: <Mooring />,
               path: "mooring",
             },
             {
