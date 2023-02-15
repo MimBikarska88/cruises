@@ -42,10 +42,14 @@ const CruiseForm = () => {
           purpose: "",
           project: "",
         },
+        parameters: [],
+        instruments: [],
       },
     },
   });
 
+  const values = form.watch();
+  console.log(values);
   return (
     <FormProvider {...form}>
       <div className="d-block p-5">

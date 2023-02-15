@@ -37,7 +37,7 @@ const Platform = () => {
               <TextInput
                 name="platformCategoryName"
                 label="Name"
-                dusabled={true}
+                disabled={true}
               />
             </div>
             <div className="pt-3">

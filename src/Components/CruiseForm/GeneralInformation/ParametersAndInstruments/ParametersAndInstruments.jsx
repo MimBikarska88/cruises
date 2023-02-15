@@ -1,13 +1,29 @@
 import tableData from "./TableData/test_data.json";
 import { columns } from "./TableData/Columns";
 import Table from "../../../BaseComponents/Table/Table";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "../../CruiseForm.module.css";
+import { useFormContext } from "react-hook-form";
+
 const ParametersAndInstruments = () => {
   const [parameters, setParameters] = useState([]);
   const [instruments, setInstruments] = useState([]);
-  const updateSelectedRows = (values) => {
-    console.log(values);
+  const { setValue } = useFormContext();
+
+  const updateParameters = (rows) => {
+    setParameters(rows);
+    setValue(
+      "general.parameters",
+      rows.map((row) => row.values)
+    );
+  };
+
+  const updateInstruments = (rows) => {
+    setInstruments(rows);
+    setValue(
+      "general.instruments",
+      rows.map((row) => row.values)
+    );
   };
 
   return (
@@ -19,7 +35,7 @@ const ParametersAndInstruments = () => {
           title="Parameters"
           displayFields={["code", "name"]}
           displayRows={parameters}
-          setDisplayRows={setParameters}
+          setDisplayRows={updateParameters}
         ></Table>
         <Table
           cols={columns}
@@ -27,7 +43,7 @@ const ParametersAndInstruments = () => {
           title="Instruments"
           displayFields={["code", "name"]}
           displayRows={instruments}
-          setDisplayRows={setInstruments}
+          setDisplayRows={updateInstruments}
         ></Table>
       </div>
     </>
