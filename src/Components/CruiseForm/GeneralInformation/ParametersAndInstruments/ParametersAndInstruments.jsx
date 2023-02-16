@@ -1,4 +1,3 @@
-import tableData from "./TableData/test_data.json";
 import { columns } from "./TableData/Columns";
 import Table from "../../../BaseComponents/Table/Table";
 import Spinner from "../../../BaseComponents/Spinner/Spinner";
