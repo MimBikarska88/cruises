@@ -1,8 +1,13 @@
-import SimpleTable from "../../../BaseComponents/SimpleTable/SimpleTable";
+import SimpleTable from "../../BaseComponents/SimpleTable/SimpleTable";
+import MooringForm from "./MooringForm/MooringForm";
+import { useState } from "react";
+
 const Mooring = () => {
+  const [moorings, setMoorings] = useState([]);
+
   return (
     <>
-      <div>
+      <div className="d-block">
         <SimpleTable
           headers={[
             "Description",
@@ -14,6 +19,9 @@ const Mooring = () => {
             "Date Time",
           ]}
         />
+      </div>
+      <div className="d-block">
+        <MooringForm />
       </div>
     </>
   );
