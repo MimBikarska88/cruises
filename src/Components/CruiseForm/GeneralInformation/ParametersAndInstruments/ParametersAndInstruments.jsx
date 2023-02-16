@@ -1,14 +1,21 @@
 import tableData from "./TableData/test_data.json";
 import { columns } from "./TableData/Columns";
 import Table from "../../../BaseComponents/Table/Table";
+import Spinner from "../../../BaseComponents/Spinner/Spinner";
 import { useState, useEffect } from "react";
 import styles from "../../CruiseForm.module.css";
 import { useFormContext } from "react-hook-form";
+import StaticDataService from "../../../../api/StaticDataService";
 
 const ParametersAndInstruments = () => {
   const [parameters, setParameters] = useState([]);
   const [instruments, setInstruments] = useState([]);
+  const [staticParameters, setStaticParameters] = useState([]);
+  const [staticInstruments, setStaticInstruments] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+
   const { setValue } = useFormContext();
+  const service = StaticDataService();
 
   const updateParameters = (rows) => {
     setParameters(rows);
@@ -26,26 +33,62 @@ const ParametersAndInstruments = () => {
     );
   };
 
+  const loadTableData = async () => {
+    await service
+      .loadAllSeaScapeParameters()
+      .then((res) => {
+        const params = Object.values(res.data)[0].map((p) => {
+          return {
+            id: p.id,
+            code: p.code,
+            label: p.label,
+          };
+        });
+        setStaticParameters(params);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+    await service.loadAllInstruments().then((res) => {
+      const params = Object.values(res.data)[0].map((p) => {
+        return {
+          id: p.id,
+          code: p.code,
+          label: p.label,
+        };
+      });
+      setStaticInstruments(params);
+    });
+    setIsLoaded(true);
+  };
+  useEffect(() => {
+    loadTableData();
+  }, []);
+
   return (
     <>
-      <div className={`${styles["cruise-table"]}`}>
-        <Table
-          cols={columns}
-          data={tableData}
-          title="Parameters"
-          displayFields={["code", "name"]}
-          displayRows={parameters}
-          setDisplayRows={updateParameters}
-        ></Table>
-        <Table
-          cols={columns}
-          data={tableData}
-          title="Instruments"
-          displayFields={["code", "name"]}
-          displayRows={instruments}
-          setDisplayRows={updateInstruments}
-        ></Table>
-      </div>
+      {!isLoaded ? (
+        <Spinner />
+      ) : (
+        <div className={`${styles["cruise-table"]}`}>
+          <Table
+            cols={columns}
+            data={staticParameters}
+            title="Parameters"
+            displayFields={["code", "label"]}
+            displayRows={parameters}
+            setDisplayRows={updateParameters}
+          ></Table>
+          <Table
+            cols={columns}
+            data={staticInstruments}
+            title="Instruments"
+            displayFields={["code", "label"]}
+            displayRows={instruments}
+            setDisplayRows={updateInstruments}
+          ></Table>
+        </div>
+      )}
     </>
   );
 };

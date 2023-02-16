@@ -8,7 +8,7 @@ export const columns = [
     accessor: "code",
   },
   {
-    Header: "Name",
-    accessor: "name",
+    Header: "Label",
+    accessor: "label",
   },
 ];
