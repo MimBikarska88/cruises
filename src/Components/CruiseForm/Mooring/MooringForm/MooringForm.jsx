@@ -35,7 +35,7 @@ const MooringForm = (props) => {
                   borderRadius: 0,
                   colors: {
                     ...theme.colors,
-                    primary25: "#007bffed",
+                    primary25: "black",
                     primary: "black",
                   },
                 })}

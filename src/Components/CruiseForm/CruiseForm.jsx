@@ -42,6 +42,15 @@ const CruiseForm = () => {
           purpose: "",
           project: "",
         },
+        platform: {
+          category: {
+            id: -1,
+            label: "",
+            definition: "",
+            name: "",
+            code: "",
+          },
+        },
         parameters: [],
         instruments: [],
         collateCenters: [],
