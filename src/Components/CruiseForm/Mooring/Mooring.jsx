@@ -5,6 +5,15 @@ import { useState } from "react";
 const Mooring = () => {
   const [moorings, setMoorings] = useState([]);
 
+  const [formVisible, setFormVisible] = useState(false);
+
+  const Cancel = () => {
+    setFormVisible(false);
+  };
+
+  const SubmitForm = (formData) => {
+    setFormVisible(false);
+  };
   return (
     <>
       <div className="d-block">
@@ -20,9 +29,11 @@ const Mooring = () => {
           ]}
         />
       </div>
-      <div className="d-block">
-        <MooringForm />
-      </div>
+      {formVisible && (
+        <div className="d-block">
+          <MooringForm Cancel={Cancel} SubmitForm={SubmitForm} />
+        </div>
+      )}
     </>
   );
 };

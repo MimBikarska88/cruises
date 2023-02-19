@@ -9,10 +9,13 @@ const StaticDataService = () => {
 
   const getPlatformCategories = () => axios.get(`${path}/platform-categories`);
 
+  const getBioIndicators = () => axios.get(`${path}/bio-indicators`);
+
   return {
     loadAllSeaScapeParameters: getSeaScapeParameters,
     loadAllInstruments: getInstruments,
     loadAllPlatformCategories: getPlatformCategories,
+    loadAllBioIndicators: getBioIndicators,
   };
 };
 export default StaticDataService;
