@@ -60,6 +60,7 @@ const CruiseForm = () => {
           originatorCenters: [],
         },
       },
+      mooring: [],
     },
   });
 

@@ -104,3 +104,8 @@
   color: black !important;
   background-color: rgb(208, 226, 243) !important;
 }
+.trash:hover {
+  box-shadow: 4px 1px 43px 1px rgba(0, 116, 255, 1);
+  -webkit-box-shadow: 4px 1px 43px 1px rgba(0, 116, 255, 1);
+  -moz-box-shadow: 4px 1px 43px 1px rgba(0, 116, 255, 1);
+}
