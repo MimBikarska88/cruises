@@ -10,6 +10,7 @@ import Tabs from "../BaseComponents/Tabs/Tabs";
 import Identification from "./Identification/Identification";
 import GeneralInformation from "./GeneralInformation/GeneralInformation";
 import Mooring from "./Mooring/Mooring";
+import Measurement from "./Measurement/Measurement";
 const CruiseForm = () => {
   const form = useForm({
     shouldUnregister: false,
@@ -48,6 +49,7 @@ const CruiseForm = () => {
         },
       },
       mooring: [],
+      measurement: [],
     },
   });
 
@@ -76,7 +78,7 @@ const CruiseForm = () => {
             },
             {
               name: "Measurement",
-              content: <p>Hello there again again again</p>,
+              content: <Measurement />,
               path: "measurement",
             },
             {

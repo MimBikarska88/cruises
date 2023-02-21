@@ -13,12 +13,15 @@ const StaticDataService = () => {
 
   const getCountries = () => axios.get(`${path}/countries`);
 
+  const getUnits = () => axios.get(`${path}/units`);
+
   return {
     loadAllSeaScapeParameters: getSeaScapeParameters,
     loadAllInstruments: getInstruments,
     loadAllPlatformCategories: getPlatformCategories,
     loadAllBioIndicators: getBioIndicators,
     loadAllCountries: getCountries,
+    loadAllUnits: getUnits,
   };
 };
 export default StaticDataService;

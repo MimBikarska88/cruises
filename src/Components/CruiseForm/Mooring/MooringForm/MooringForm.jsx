@@ -1,7 +1,7 @@
 /**
  * External Dependencies.
  */
-import { createRef, useState } from "react";
+import { useState } from "react";
 
 /**
  * Internal Dependencies.
@@ -38,8 +38,6 @@ const MooringForm = (props) => {
   });
 
   const [description, setDescription] = useState("");
-
-  const textAreaRef = createRef();
 
   const updateDateTime = (e) => {
     setDateTime(e.target.value.toString());
