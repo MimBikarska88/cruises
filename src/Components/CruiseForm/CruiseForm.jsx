@@ -19,8 +19,8 @@ const CruiseForm = () => {
       identification: {
         cruiseId: "",
         cruiseName: "",
-        creationDate: new Date().toISOString(),
-        revisionDate: new Date().toISOString(),
+        creationDate: new Date().toLocaleString(),
+        revisionDate: new Date().toLocaleString(),
         author: "",
       },
       general: {
