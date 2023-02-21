@@ -1,45 +1,45 @@
+import { useState, useEffect } from "react";
+import { useFormContext, Controller } from "react-hook-form";
+
 import Select from "react-select";
 import TextInput from "../../../BaseComponents/TextInput/TextInput";
 import TextArea from "../../../BaseComponents/TextArea/TextArea";
 import styles from "../../../CruiseForm/CruiseForm.module.css";
-import { useState, useEffect } from "react";
-import { useFormContext, Controller } from "react-hook-form";
 import Spinner from "../../../BaseComponents/Spinner/Spinner";
 import StaticDataService from "../../../../api/StaticDataService";
+
 const Platform = () => {
   const service = StaticDataService();
   const [platformCategories, setPlatformCategories] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState({});
+  const [selectedCategory, setSelectedCategory] = useState({
+    id: undefined,
+    definition: "",
+    label: "",
+    code: "",
+    name: "",
+  });
   const { ...form } = useFormContext();
 
-  const updatePlatformCategory = (category) => {
-    console.log(category);
-    setSelectedCategory(category);
-    form.setValue("general.platform.category", category.value);
-  };
   useEffect(() => {
     service
       .loadAllPlatformCategories()
       .then((res) => {
-        const categories = Object.values(res.data)[0].map((category) => {
-          if (!category.label) return;
-          return {
-            value: category,
-            label: category.label,
-          };
-        });
-        setPlatformCategories(categories);
+        setPlatformCategories(Object.values(res.data)[0]);
         setIsLoaded(true);
       })
       .catch((err) => console.log(err));
   }, []);
+
+  useEffect(() => {
+    form.setValue("general.platformCategory", selectedCategory);
+  }, [selectedCategory]);
   return (
     <>
       {!isLoaded ? (
         <Spinner />
       ) : (
-        <div className={`container ${styles["cruise-info"]}`}>
+        <div className={`container mt-3 ${styles["cruise-info"]}`}>
           <div className="row mb-5">
             <div className="col mt-1">
               <label className="pt-4">Platform Name*</label>
@@ -58,10 +58,10 @@ const Platform = () => {
             <div className="col pt-3">
               <div className="d-flex">
                 <div className="w-25 d-inline-block mr-3">
-                  <TextInput label="Code" name="platformCode" />
+                  <TextInput label="Code" name="platformCode" disabled />
                 </div>
                 <div className="w-75 d-inline-block">
-                  <TextInput label="Name" name="platformName" />
+                  <TextInput label="Name" name="platformName" disabled />
                 </div>
               </div>
             </div>
@@ -79,58 +79,46 @@ const Platform = () => {
                     primary: "black",
                   },
                 })}
-                options={platformCategories}
-                onChange={updatePlatformCategory}
+                options={platformCategories.map((category) => {
+                  if (!category.label) return;
+                  return {
+                    value: category,
+                    label: category.label,
+                  };
+                })}
+                onChange={(e) => setSelectedCategory(e.value)}
               />
             </div>
           </div>
           <div className="row mb-7">
             <div className="col-sm-6">
               <div className="pt-3">
-                <Controller
-                  control={form.control}
-                  name="general.platform.category.code"
-                  render={({ field }) => (
-                    <TextInput
-                      name="platformCategoryCode"
-                      label="Code"
-                      disabled={true}
-                      {...field}
-                    />
-                  )}
+                <TextInput
+                  name="platformCategoryCode"
+                  label="Code"
+                  disabled={true}
+                  value={selectedCategory.code}
                 />
               </div>
             </div>
             <div className="col-sm-6">
               <div className="pt-3">
-                <Controller
-                  control={form.control}
-                  name="general.platform.category.label"
-                  render={({ field }) => (
-                    <TextInput
-                      name="platformCategoryName"
-                      label="Name"
-                      disabled={true}
-                      {...field}
-                    />
-                  )}
+                <TextInput
+                  name="platformCategoryName"
+                  label="Name"
+                  disabled={true}
+                  value={selectedCategory.label}
                 />
               </div>
             </div>
           </div>
           <div className="row-mb-7">
             <div className="pt-3">
-              <Controller
-                control={form.control}
-                name="general.platform.category.definition"
-                render={({ field }) => (
-                  <TextArea
-                    name="platformCategoryDefinition"
-                    label="Definition"
-                    disabled={true}
-                    {...field}
-                  />
-                )}
+              <TextArea
+                name="platformCategoryDefinition"
+                label="Definition"
+                disabled={true}
+                value={selectedCategory.definition}
               />
             </div>
           </div>
