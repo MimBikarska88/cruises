@@ -15,6 +15,9 @@ const StaticDataService = () => {
 
   const getUnits = () => axios.get(`${path}/units`);
 
+  const getDataAccessRestriction = () =>
+    axios.get(`${path}/data-access-restriction`);
+
   return {
     loadAllSeaScapeParameters: getSeaScapeParameters,
     loadAllInstruments: getInstruments,
@@ -22,6 +25,7 @@ const StaticDataService = () => {
     loadAllBioIndicators: getBioIndicators,
     loadAllCountries: getCountries,
     loadAllUnits: getUnits,
+    loadDataAccessRestriction: getDataAccessRestriction,
   };
 };
 export default StaticDataService;

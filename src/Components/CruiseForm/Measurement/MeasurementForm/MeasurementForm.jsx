@@ -3,8 +3,10 @@ import { useState } from "react";
 import TextInput from "../../../BaseComponents/TextInput/TextInput";
 import TextArea from "../../../BaseComponents/TextArea/TextArea";
 import Select from "react-select";
+import Button from "../../../BaseComponents/Button/Button";
 const MeasurementForm = (props) => {
-  const { dataTypes, organizations, individuals, units } = props;
+  const { dataTypes, organizations, individuals, units, Cancel, SubmitForm } =
+    props;
 
   const [quantity, setQuantity] = useState(0);
 
@@ -22,6 +24,62 @@ const MeasurementForm = (props) => {
     code: "",
     label: "",
   });
+
+  const [selectedOrganization, setSelectedOrganization] = useState({
+    id: 0,
+    code: "",
+    label: "",
+  });
+
+  const [selectedIndividual, setSelectedIndividual] = useState({
+    id: 0,
+    name: "",
+  });
+  const [description, setDescription] = useState("");
+
+  const [dateTime, setDateTime] = useState("");
+
+  const updateDateTime = (e) => {
+    setDateTime(e.target.value.toString());
+  };
+
+  const handleDescriptionChange = (e) => {
+    setDescription(e.target.value);
+  };
+
+  const resetDefaults = () => {
+    setQuantity(0);
+    setSelectedUnit({
+      id: 0,
+      code: "",
+      name: "",
+      description: "",
+      label: "",
+      alternative_label: "",
+    });
+    setSelectedDataType({
+      id: 0,
+      code: "",
+      label: "",
+    });
+    setSelectedIndividual({});
+    setSelectedOrganization({});
+    setDateTime("");
+    setDescription("");
+  };
+  const handleSubmit = () => {
+    const measurement = {
+      unit: selectedUnit,
+      dataType: selectedDataType,
+      individual: selectedIndividual,
+      dateTime: dateTime,
+      description: description.toString(),
+      organization: selectedOrganization,
+      quantity: quantity,
+    };
+    SubmitForm(measurement);
+    resetDefaults();
+  };
 
   return (
     <>
@@ -104,7 +162,11 @@ const MeasurementForm = (props) => {
           </div>
           <div className="row mt-5">
             <div className="col-4">
-              <TextInput type="datetime-local" label="Date Time" />
+              <TextInput
+                type="datetime-local"
+                onChange={updateDateTime}
+                label="Date Time"
+              />
             </div>
           </div>
           <div className="row">
@@ -121,6 +183,8 @@ const MeasurementForm = (props) => {
                     primary: "black",
                   },
                 })}
+                onChange={(e) => setSelectedIndividual(e.value)}
+                options={individuals}
               />
             </div>
           </div>
@@ -138,6 +202,8 @@ const MeasurementForm = (props) => {
                   },
                 })}
                 isSearchable
+                options={organizations}
+                onChange={(e) => setSelectedOrganization(e.value)}
               />
             </div>
             <div className="col">
@@ -145,7 +211,23 @@ const MeasurementForm = (props) => {
                 disabled
                 name="organizationName"
                 label="OrganizationName"
+                value={selectedOrganization.label}
               />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-12">
+              <TextArea
+                label="Description"
+                onChange={handleDescriptionChange}
+                placeholder="Provide description ..."
+              />
+            </div>
+          </div>
+          <div className="row mt-4">
+            <div className="d-flex justify-content-center">
+              <Button value="Save" className="mr-2" onClick={handleSubmit} />
+              <Button value="Cancel" onClick={Cancel} />
             </div>
           </div>
         </div>
