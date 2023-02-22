@@ -68,7 +68,7 @@ const Mooring = () => {
     service
       .loadAllBioIndicators()
       .then((res) => {
-        setDataTypes(Object.values(res.data)[0]);
+        setDataTypes(res.data.data);
         setIsLoaded(true);
       })
       .catch((err) => console.log(err));

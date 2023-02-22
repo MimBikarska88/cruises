@@ -25,7 +25,7 @@ const Platform = () => {
     service
       .loadAllPlatformCategories()
       .then((res) => {
-        setPlatformCategories(Object.values(res.data)[0]);
+        setPlatformCategories(res.data.data);
         setIsLoaded(true);
       })
       .catch((err) => console.log(err));

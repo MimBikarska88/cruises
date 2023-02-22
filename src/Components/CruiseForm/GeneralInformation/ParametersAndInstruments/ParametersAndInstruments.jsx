@@ -3,7 +3,7 @@ import Table from "../../../BaseComponents/Table/Table";
 import Spinner from "../../../BaseComponents/Spinner/Spinner";
 import { useState, useEffect } from "react";
 import styles from "../../CruiseForm.module.css";
-import { useFormContext } from "react-hook-form";
+import { useFormContext, Controller } from "react-hook-form";
 import StaticDataService from "../../../../api/StaticDataService";
 
 const ParametersAndInstruments = () => {
@@ -36,7 +36,7 @@ const ParametersAndInstruments = () => {
     await service
       .loadAllSeaScapeParameters()
       .then((res) => {
-        const params = Object.values(res.data)[0].map((p) => {
+        const params = res.data.data.map((p) => {
           return {
             id: p.id,
             code: p.code,
@@ -49,7 +49,7 @@ const ParametersAndInstruments = () => {
         console.log(err.message);
       });
     await service.loadAllInstruments().then((res) => {
-      const params = Object.values(res.data)[0].map((p) => {
+      const params = res.data.data.map((p) => {
         return {
           id: p.id,
           code: p.code,

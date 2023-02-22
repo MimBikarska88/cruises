@@ -64,7 +64,7 @@ const Cruise = () => {
     service
       .loadAllCountries()
       .then((res) => {
-        setCountries(Object.values(res.data)[0]);
+        setCountries(res.data.data);
         setIsLoading(false);
       })
       .catch((err) => console.log(err));

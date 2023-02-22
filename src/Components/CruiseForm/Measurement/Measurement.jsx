@@ -66,13 +66,13 @@ const Measurement = (props) => {
     await service
       .loadAllUnits()
       .then((res) => {
-        setUnits(Object.values(res.data)[0]);
+        setUnits(res.data.data);
       })
       .catch((err) => console.log(err));
     await service
       .loadAllBioIndicators()
       .then((res) => {
-        setDataTypes(Object.values(res.data)[0]);
+        setDataTypes(res.data.data);
       })
       .catch((err) => console.log(err));
     setIsLoaded(true);
