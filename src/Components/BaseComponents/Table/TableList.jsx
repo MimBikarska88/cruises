@@ -10,15 +10,13 @@ const TableList = (props) => {
           </>
         ) : (
           <ul className="list-group d-block list-group-flush">
-            {displayRows
-              .map((row) => row.values)
-              .map((value) => (
-                <li className="list-group-item">
-                  {displayFields
-                    .map((field) => value[`${field}`])
-                    .join(delimeter ? delimeter : " - ")}
-                </li>
-              ))}
+            {displayRows.map((value) => (
+              <li className="list-group-item">
+                {displayFields
+                  .map((field) => value[`${field}`])
+                  .join(delimeter ? delimeter : " - ")}
+              </li>
+            ))}
           </ul>
         )}
       </div>

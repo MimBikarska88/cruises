@@ -12,23 +12,24 @@ const ResponsibleParty = () => {
   const [cruiseLeaders, setCruiseLeaders] = useState([]);
   const [originatorCenters, setOriginatorCenters] = useState([]);
 
-  const { setValue } = useFormContext();
+  const { setValue, getValues } = useFormContext();
   const updateChiefScientists = (rows) => {
     setChiefScientists(rows);
     setValue(
-      "responsibleParty.chiefScientists",
+      "general.responsibleParty.chiefScientists",
       rows.map((r) => r.values)
     );
   };
   const updateCruiseLeaders = (rows) => {
     setCruiseLeaders(rows);
     setValue(
-      "responsibleParty.cruiseLeaders",
+      "general.responsibleParty.cruiseLeaders",
       rows.map((r) => r.values)
     );
   };
+  const updateOriginatorCenters = (originatorCenters) => {};
   useEffect(() => {
-    setValue("responsibleParty.originatorCentres", originatorCenters);
+    setValue("general.responsibleParty.originatorCenters", originatorCenters);
   }, [originatorCenters]);
   return (
     <>
@@ -38,7 +39,7 @@ const ResponsibleParty = () => {
           data={tableData}
           title="Chief Scientists"
           displayFields={["first_name", "last_name"]}
-          displayRows={chiefScientists}
+          displayRows={getValues("general.responsibleParty.chiefScientists")}
           setDisplayRows={updateChiefScientists}
           delimeter={" "}
         ></Table>
@@ -47,7 +48,7 @@ const ResponsibleParty = () => {
           data={tableData}
           title="Cruise Leaders"
           displayFields={["first_name", "last_name"]}
-          displayRows={cruiseLeaders}
+          displayRows={getValues("general.responsibleParty.cruiseLeaders")}
           setDisplayRows={updateCruiseLeaders}
           delimeter={" "}
         ></Table>

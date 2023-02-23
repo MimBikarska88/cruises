@@ -7,29 +7,22 @@ import { useFormContext, Controller } from "react-hook-form";
 import StaticDataService from "../../../../api/StaticDataService";
 
 const ParametersAndInstruments = () => {
-  const [parameters, setParameters] = useState([]);
   const [instruments, setInstruments] = useState([]);
   const [staticParameters, setStaticParameters] = useState([]);
   const [staticInstruments, setStaticInstruments] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const { setValue } = useFormContext();
+  const { setValue, getValues } = useFormContext();
   const service = StaticDataService();
 
   const updateParameters = (rows) => {
-    setParameters(rows);
-    setValue(
-      "general.parameters",
-      rows.map((row) => row.values)
-    );
+    const rowVals = rows.map((row) => row.values);
+    setValue("general.parameters", rowVals);
   };
 
   const updateInstruments = (rows) => {
-    setInstruments(rows);
-    setValue(
-      "general.instruments",
-      rows.map((row) => row.values)
-    );
+    const rowVals = rows.map((row) => row.values);
+    setValue("general.instruments", rowVals);
   };
 
   const loadTableData = async () => {
@@ -75,7 +68,7 @@ const ParametersAndInstruments = () => {
             data={staticParameters}
             title="Parameters"
             displayFields={["code", "label"]}
-            displayRows={parameters}
+            displayRows={getValues("general.parameters")}
             setDisplayRows={updateParameters}
           ></Table>
           <Table
@@ -83,7 +76,7 @@ const ParametersAndInstruments = () => {
             data={staticInstruments}
             title="Instruments"
             displayFields={["code", "label"]}
-            displayRows={instruments}
+            displayRows={getValues("general.instruments")}
             setDisplayRows={updateInstruments}
           ></Table>
         </div>
