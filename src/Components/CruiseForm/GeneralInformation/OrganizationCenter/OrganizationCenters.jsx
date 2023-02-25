@@ -24,8 +24,9 @@ const CollateCenter = (props) => {
   });
   const addOrganizationToTable = () => {
     const organizationValue = JSON.parse(JSON.stringify(currentOrganization));
+    console.log(organizations);
     if (!organizations.find((o) => o.id === organizationValue.id)) {
-      setOrganizations((current) => [...current, organizationValue]);
+      setOrganizations([...organizations, organizationValue]);
     }
     closeOrganizationList();
   };

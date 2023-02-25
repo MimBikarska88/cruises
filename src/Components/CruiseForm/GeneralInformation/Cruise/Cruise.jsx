@@ -68,11 +68,6 @@ const Cruise = () => {
         setIsLoading(false);
       })
       .catch((err) => console.log(err));
-
-    service
-      .loadDataAccessRestriction()
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
   }, []);
 
   useEffect(() => {

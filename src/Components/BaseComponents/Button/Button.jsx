@@ -1,9 +1,9 @@
-const Button = ({ className, onClick, value }) => {
+const Button = ({ className, onClick, value, type }) => {
   return (
     <button
       onClick={onClick}
       className={`btn btn-outline-dark rounded-0 ${className}`}
-      type="button"
+      type={!type ? "button" : "submit"}
       aria-selected="true"
     >
       {value}

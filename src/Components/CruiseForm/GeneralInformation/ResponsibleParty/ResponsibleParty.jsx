@@ -2,7 +2,7 @@ import tableData from "./TableData/persons.json";
 import { columns } from "./TableData/Columns";
 import Table from "../../../BaseComponents/Table/Table";
 import { useState, useEffect } from "react";
-import { useFormContext } from "react-hook-form";
+import { useFormContext, Controller } from "react-hook-form";
 import styles from "../../CruiseForm.module.css";
 import OrganizationCenters from "../OrganizationCenter/OrganizationCenters";
 import names from "../GeneralInformation.constants";
@@ -12,7 +12,7 @@ const ResponsibleParty = () => {
   const [cruiseLeaders, setCruiseLeaders] = useState([]);
   const [originatorCenters, setOriginatorCenters] = useState([]);
 
-  const { setValue, getValues } = useFormContext();
+  const { setValue, getValues, control } = useFormContext();
   const updateChiefScientists = (rows) => {
     setChiefScientists(rows);
     setValue(
@@ -27,7 +27,7 @@ const ResponsibleParty = () => {
       rows.map((r) => r.values)
     );
   };
-  const updateOriginatorCenters = (originatorCenters) => {};
+
   useEffect(() => {
     setValue("general.responsibleParty.originatorCenters", originatorCenters);
   }, [originatorCenters]);
@@ -52,11 +52,17 @@ const ResponsibleParty = () => {
           setDisplayRows={updateCruiseLeaders}
           delimeter={" "}
         ></Table>
-        <OrganizationCenters
-          organizations={originatorCenters}
-          setOrganizations={setOriginatorCenters}
-          availableOrganizations={names}
-          title="Originator Centers"
+        <Controller
+          control={control}
+          name="general.responsibleParty.originatorCenters"
+          render={({ field }) => (
+            <OrganizationCenters
+              organizations={field.value}
+              setOrganizations={field.onChange}
+              availableOrganizations={names}
+              title="Originator Centers"
+            />
+          )}
         />
       </div>
     </>

@@ -11,6 +11,7 @@ import Identification from "./Identification/Identification";
 import GeneralInformation from "./GeneralInformation/GeneralInformation";
 import Mooring from "./Mooring/Mooring";
 import Measurement from "./Measurement/Measurement";
+import Button from "../BaseComponents/Button/Button";
 const CruiseForm = () => {
   const form = useForm({
     shouldUnregister: false,
@@ -55,45 +56,59 @@ const CruiseForm = () => {
 
   const values = form.watch();
   console.log(values);
+  const onSubmit = (data) => {
+    console.log(data);
+  };
   return (
     <FormProvider {...form}>
-      <div className="d-block p-5">
-        <Tabs
-          title={"Tabs"}
-          tabs={[
-            {
-              name: "Identification",
-              content: <Identification />,
-              path: "identification",
-            },
-            {
-              name: "General Information",
-              content: <GeneralInformation />,
-              path: "general-information/*",
-            },
-            {
-              name: "Mooring",
-              content: <Mooring />,
-              path: "mooring",
-            },
-            {
-              name: "Measurement",
-              content: <Measurement />,
-              path: "measurement",
-            },
-            {
-              name: "Geographical Area",
-              content: <p>Hello there again again again</p>,
-              path: "geographical-area",
-            },
-            {
-              name: "Documentation",
-              content: <p>Hello there again again again</p>,
-              path: "documentation",
-            },
-          ]}
-        />
-      </div>
+      <form onSubmit={form.handleSubmit(onSubmit)}>
+        <div className="d-grid p-4">
+          <div className="row">
+            <div className="col-1" style={{ marginTop: "2rem" }}>
+              <Button className="ml-3" type="submit" value={"Submit"} />
+            </div>
+            <div className="col-11">
+              <div className="d-block">
+                <Tabs
+                  title={"Tabs"}
+                  tabs={[
+                    {
+                      name: "Identification",
+                      content: <Identification />,
+                      path: "identification",
+                    },
+                    {
+                      name: "General Information",
+                      content: <GeneralInformation />,
+                      path: "general-information/*",
+                    },
+                    {
+                      name: "Mooring",
+                      content: <Mooring />,
+                      path: "mooring",
+                    },
+                    {
+                      name: "Measurement",
+                      content: <Measurement />,
+                      path: "measurement",
+                    },
+                    {
+                      name: "Geographical Area",
+                      content: <p>Hello there again again again</p>,
+                      path: "geographical-area",
+                    },
+                    {
+                      name: "Documentation",
+                      content: <p>Hello there again again again</p>,
+                      path: "documentation",
+                    },
+                  ]}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
     </FormProvider>
   );
 };

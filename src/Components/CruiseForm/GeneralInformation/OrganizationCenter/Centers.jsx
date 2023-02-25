@@ -1,8 +1,12 @@
 import styles from "./Center.module.css";
 import Button from "../../../BaseComponents/Button/Button";
 const Centers = (props) => {
-  const { organizations, removeOrganization, title, openOrganizationsList } =
-    props;
+  const {
+    organizations = [],
+    removeOrganization,
+    title,
+    openOrganizationsList,
+  } = props;
   return (
     <>
       <div className="container mt-3">
