@@ -23,8 +23,8 @@ const CruiseForm = () => {
       identification: {
         cruiseId: "",
         cruiseName: "",
-        creationDate: new Date().toLocaleString(),
-        revisionDate: new Date().toLocaleString(),
+        creationDate: new Date().toISOString(),
+        revisionDate: new Date().toISOString(),
         author: "",
       },
       general: {
@@ -62,8 +62,8 @@ const CruiseForm = () => {
   const onSubmit = (data) => {
     const cruise = {
       cruise_name: data.identification.cruiseName,
-      creation_date: "2023-02-25T23:41:00+00:00",
-      revision_date: "2023-02-25T23:41:00+00:00",
+      creation_date: data.identification.creationDate,
+      revision_date: data.identification.revisionDate,
       author: data.identification.author,
       period_start_date: data.general.cruise.startDate,
       period_end_date: data.general.cruise.endDate,
@@ -71,7 +71,7 @@ const CruiseForm = () => {
       country_of_return: data.general.cruise.countryOfReturn.id,
       country_of_departure: data.general.cruise.countryOfDeparture.id,
       port_of_return: 1,
-      data_access_restriction: 3,
+      data_access_restriction: data.general.cruise.dataAccessRestriction.id,
       objectives: data.general.objectives.purpose,
       project_name: data.general.objectives.project,
       platform: 1,

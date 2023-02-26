@@ -21,6 +21,8 @@ const Cruise = () => {
 
   const [countries, setCountries] = useState([]);
 
+  const [dataAccessRestriction, setDataAccessRestriction] = useState([]);
+
   const [selectedCountryOfDeparture, setSelectedCountryOfDeparture] = useState({
     id: null,
     code: null,
@@ -49,6 +51,14 @@ const Cruise = () => {
     label: null,
   });
 
+  const [selectedAccessRestriction, setSelectedAccessRestriction] = useState({
+    id: null,
+    code: null,
+    name: null,
+    label: null,
+    definition: null,
+  });
+
   const [isLoading, setIsLoading] = useState(true);
 
   const mapToSelectOptions = (data) => {
@@ -68,6 +78,12 @@ const Cruise = () => {
         setIsLoading(false);
       })
       .catch((err) => console.log(err));
+    service
+      .loadDataAccessRestriction()
+      .then((res) => {
+        setDataAccessRestriction(res.data.data);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   useEffect(() => {
@@ -80,6 +96,13 @@ const Cruise = () => {
   useEffect(() => {
     form.setValue("general.cruise.countryOfReturn", selectedCountryOfReturn);
   }, [selectedCountryOfReturn]);
+
+  useEffect(() => {
+    form.setValue(
+      "general.cruise.dataAccessRestriction",
+      selectedAccessRestriction
+    );
+  }, [selectedAccessRestriction]);
 
   return (
     <>
@@ -266,19 +289,33 @@ const Cruise = () => {
                     primary: "black",
                   },
                 })}
+                options={mapToSelectOptions(dataAccessRestriction)}
+                onChange={(e) => setSelectedAccessRestriction(e.value)}
               />
             </div>
 
             <div className="col">
               <div className="mt-10">
-                <TextInput label="Code" disabled />
+                <TextInput
+                  label="Code"
+                  disabled
+                  value={selectedAccessRestriction.code}
+                />
               </div>
 
               <div className="mt-10">
-                <TextInput label="Name" disabled />
+                <TextInput
+                  label="Name"
+                  disabled
+                  value={selectedAccessRestriction.label}
+                />
               </div>
 
-              <TextArea label="Definition" disabled />
+              <TextArea
+                label="Definition"
+                disabled
+                value={selectedAccessRestriction.definition}
+              />
             </div>
           </div>
         </div>
