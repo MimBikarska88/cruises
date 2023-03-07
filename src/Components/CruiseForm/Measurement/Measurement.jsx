@@ -11,13 +11,11 @@ import Spinner from "../../BaseComponents/Spinner/Spinner";
 const Measurement = (props) => {
   const service = StaticDataService();
 
-  const { setValue } = useFormContext();
+  const { setValue, getValues } = useFormContext();
 
   const [visibleTable, setVisibleTable] = useState(true);
 
   const [visibleForm, setVisibleForm] = useState(false);
-
-  const [measurements, setMeasurements] = useState([]);
 
   const [units, setUnits] = useState([]);
 
@@ -36,10 +34,14 @@ const Measurement = (props) => {
   };
 
   const removeMeasurement = (e, index) => {
-    setMeasurements((current) => current.filter((o, i) => i !== index));
+    const currentMeasurement = getValues("measurement");
+    setValue(
+      "measurement",
+      currentMeasurement.filter((o, i) => i !== index)
+    );
   };
   const mapMeasurementsToTableData = () => {
-    return measurements.map((measurement, index) => {
+    return getValues("measurement").map((measurement, index) => {
       const row = [
         <i
           className={`fa fa-trash mr-2 ${styles.trash}`}
@@ -57,7 +59,8 @@ const Measurement = (props) => {
     });
   };
   const SubmitForm = (measurement) => {
-    setMeasurements((current) => [...current, measurement]);
+    const currentMeasurement = getValues("measurement");
+    setValue("measurement", [...currentMeasurement, measurement]);
     setVisibleForm(false);
     setVisibleTable(true);
   };
@@ -81,9 +84,6 @@ const Measurement = (props) => {
     loadStaticData();
   }, []);
 
-  useEffect(() => {
-    setValue("measurement", measurements);
-  }, [measurements]);
   return (
     <>
       {!isLoaded ? (
@@ -94,7 +94,7 @@ const Measurement = (props) => {
             {visibleTable && (
               <>
                 <div className="d-block mb-5 text-center">
-                  {measurements.length === 0 ? (
+                  {getValues("measurement").length === 0 ? (
                     <h5>No measurement data inserted.</h5>
                   ) : (
                     <h5>Measurement</h5>
