@@ -11,9 +11,7 @@ import styles from "./Mooring.module.css";
 const Mooring = () => {
   const service = StaticDataService();
 
-  const { setValue } = useFormContext();
-
-  const [moorings, setMoorings] = useState([]);
+  const { setValue, getValues } = useFormContext();
 
   const [formVisible, setFormVisible] = useState(false);
 
@@ -33,7 +31,8 @@ const Mooring = () => {
   };
 
   const SubmitForm = (mooring) => {
-    setMoorings((current) => [...current, mooring]);
+    const currentMoorings = getValues("mooring");
+    setValue("mooring", [...currentMoorings, mooring]);
     setFormVisible(false);
     setTableVisible(true);
   };
@@ -44,10 +43,14 @@ const Mooring = () => {
   };
 
   const removeMooring = (e, index) => {
-    setMoorings((current) => current.filter((o, i) => i !== index));
+    const currentMoorings = getValues("mooring");
+    setValue(
+      "mooring",
+      currentMoorings.filter((o, i) => i !== index)
+    );
   };
   const mooringToTableData = () => {
-    return moorings.map((mooring, index) => {
+    return getValues("mooring").map((mooring, index) => {
       const row = [
         <i
           className={`fa fa-trash mr-2 ${styles.trash}`}
@@ -74,9 +77,6 @@ const Mooring = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  useEffect(() => {
-    setValue("mooring", moorings);
-  }, [moorings]);
   return (
     <>
       {!isLoaded ? (
@@ -86,7 +86,7 @@ const Mooring = () => {
           {tableVisible && (
             <>
               <div className="d-block mb-5 text-center">
-                {moorings.length === 0 ? (
+                {getValues("mooring").length === 0 ? (
                   <h5>No mooring data inserted.</h5>
                 ) : (
                   <h5>Moorings</h5>
